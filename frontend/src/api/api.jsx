@@ -43,6 +43,11 @@ const updateEmailAndFn = async (data)=>{
     return resp.data;
 }
 
+const changePassword = async (data)=>{
+    const resp = await axiosInstance.post('/user/change-password/', data);
+    return resp.data;
+}
 
-export {contactForm,logout,login,fetchUser,updateEmailAndFn}
+
+export {contactForm,logout,login,fetchUser,updateEmailAndFn,changePassword}
 export default axiosInstance;

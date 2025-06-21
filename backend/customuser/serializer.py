@@ -17,7 +17,7 @@ class PasswordSerializer(ModelSerializer):
     change_password = serializers.CharField(write_only=True, required=True,min_length=8)
     class Meta:
         model = CustomUser
-        fields = ['password']
+        fields = ['password', 'change_password']
     
 
     def update(self, instance, validated_data):

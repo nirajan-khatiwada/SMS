@@ -1,6 +1,7 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { useQuery,useMutation } from '@tanstack/react-query';
-import { updateEmailAndFn,fetchUser } from '../../api/api';
+import React, { useState, useContext, useEffect, use } from 'react';
+import { useQuery,useMutation, QueryClient, useQueryClient } from '@tanstack/react-query';
+import { updateEmailAndFn,fetchUser,changePassword } from '../../api/api';
+import { toast } from 'react-toastify';
 
 import {
     Shield,
@@ -26,6 +27,8 @@ const Lprofile = () => {
     gcTime: 1000 * 60 * 10, // 10 minutes
     })
 
+    const queryClient = useQueryClient()
+
     
 
     const {mutate:profileMutate}=useMutation({
@@ -42,10 +45,35 @@ const Lprofile = () => {
         );
         },
         onSuccess: (sdata,data) => {
-            console.log('Profile updated successfully:', sdata,data);
+            console.log('Profile updated successfully', sdata);
+            console.log('Data sent:', data);
+            queryClient.invalidateQueries({
+                queryKey: ['user'],
+            })
             
         },
+        onError: (error)=>{
+            toast.error('Failed to update profile. Please try again later.');
+        }
+
     })
+
+    const {mutate:passwordMutate} = useMutation({
+        mutationFn: (data) => {
+            return changePassword(data);
+        },
+        onSuccess: (sdata, data) => {
+            console.log('Password changed successfully', sdata);
+            console.log('Data sent:', data);
+            // Optionally, you can invalidate queries or show a success message
+        },
+        onError: (error) => {
+           
+            toast.error('Failed to change password. Please try again later.');
+        }
+    });
+
+
 
     
  
@@ -69,18 +97,86 @@ const Lprofile = () => {
     confirmPassword: ''
   });
 
+  // Validation states
+  const [errors, setErrors] = useState({
+    fullName: '',
+    email: '',
+    passwordMismatch: ''
+  });
   // Handlers
   const handlePersonalInfoChange = (field, value) => {
     setPersonalInfo(prev => ({
       ...prev,
       [field]: value
     }));
+    
+    // Clear errors when user starts typing
+    if (errors[field]) {
+      setErrors(prev => ({
+        ...prev,
+        [field]: ''
+      }));
+    }
   };
+  
   const handlePasswordChange = (field, value) => {
     setPasswordForm(prev => ({
       ...prev,
       [field]: value
     }));
+    
+    // Clear password mismatch error when user types
+    if (errors.passwordMismatch && (field === 'newPassword' || field === 'confirmPassword')) {
+      setErrors(prev => ({
+        ...prev,
+        passwordMismatch: ''
+      }));
+    }
+  };
+
+  // Validation functions
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const validateFullName = (name) => {
+    return name.trim().length >= 2 && name.trim().split(' ').length >= 1;
+  };
+
+  const validatePersonalInfo = () => {
+    const newErrors = {};
+    
+    if (!validateFullName(personalInfo.fullName)) {
+      newErrors.fullName = 'Full name must be at least 2 characters long';
+    }
+    
+    if (!validateEmail(personalInfo.email)) {
+      newErrors.email = 'Please enter a valid email address';
+    }
+    
+    setErrors(prev => ({ ...prev, ...newErrors }));
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const validatePasswords = () => {
+    if (passwordForm.newPassword !== passwordForm.confirmPassword) {
+      setErrors(prev => ({
+        ...prev,
+        passwordMismatch: 'New password and confirm password must match'
+      }));
+      return false;
+    }
+    
+    if (passwordForm.newPassword.length < 6) {
+      setErrors(prev => ({
+        ...prev,
+        passwordMismatch: 'Password must be at least 6 characters long'
+      }));
+      return false;
+    }
+    
+    return true;
   };
 
   const togglePasswordVisibility = (field) => {
@@ -99,8 +195,12 @@ const Lprofile = () => {
       });
     }
   }, [data]);
-
   const handleSavePersonalInfo = () => {
+    // Validate before saving
+    if (!validatePersonalInfo()) {
+      return;
+    }
+    
     // API call to save personal info
     profileMutate(
         {
@@ -110,9 +210,8 @@ const Lprofile = () => {
         }
     )
     setIsEditingPersonal(false);
-  };  
-  
-  const handleCancelPersonalEdit = () => {
+  };
+    const handleCancelPersonalEdit = () => {
     // Reset to original values from API data
     if (data) {
       setPersonalInfo({
@@ -122,12 +221,27 @@ const Lprofile = () => {
         role: data.role || ''
       });
     }
+    // Clear errors
+    setErrors({
+      fullName: '',
+      email: '',
+      passwordMismatch: ''
+    });
     setIsEditingPersonal(false);
   };
 
   const handleChangePassword = () => {
+    // Validate passwords before changing
+    if (!validatePasswords()) {
+      return;
+    }
+    
     // API call to change password
-    console.log('Changing password');
+    passwordMutate({
+       password: passwordForm.currentPassword,
+       change_password: passwordForm.newPassword
+    });
+
     setPasswordForm({
       currentPassword: '',
       newPassword: '',
@@ -142,6 +256,11 @@ const Lprofile = () => {
       newPassword: '',
       confirmPassword: ''
     });
+    // Clear password errors
+    setErrors(prev => ({
+      ...prev,
+      passwordMismatch: ''
+    }));
     setIsChangingPassword(false);
   };
   // Loading state
@@ -232,21 +351,27 @@ const Lprofile = () => {
             </div>
           </div>
 
-          <div className="p-6 space-y-6">
-            {/* Full Name */}
+          <div className="p-6 space-y-6">            {/* Full Name */}
             <div className="space-y-2">
               <label className="text-sm font-medium text-gray-700 flex items-center space-x-2">
                 <User className="w-4 h-4" />
                 <span>Full Name</span>
               </label>
               {isEditingPersonal ? (
-                <input
-                  type="text"
-                  value={personalInfo.fullName}
-                  onChange={(e) => handlePersonalInfoChange('fullName', e.target.value)}
-                  className="w-full px-4 py-3 bg-gray-50/50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
-                  placeholder="Enter your full name"
-                />
+                <div>
+                  <input
+                    type="text"
+                    value={personalInfo.fullName}
+                    onChange={(e) => handlePersonalInfoChange('fullName', e.target.value)}
+                    className={`w-full px-4 py-3 bg-gray-50/50 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 ${
+                      errors.fullName ? 'border-red-300 bg-red-50/50' : 'border-gray-200'
+                    }`}
+                    placeholder="Enter your full name"
+                  />
+                  {errors.fullName && (
+                    <p className="text-red-500 text-sm mt-1">{errors.fullName}</p>
+                  )}
+                </div>
               ) : (
                 <p className="px-4 py-3 bg-gray-50/30 rounded-xl text-gray-900 font-medium">
                   {personalInfo.fullName}
@@ -266,28 +391,33 @@ const Lprofile = () => {
                   Read Only
                 </span>
               </div>
-            </div>
-
-            {/* Email */}
+            </div>            {/* Email */}
             <div className="space-y-2">
               <label className="text-sm font-medium text-gray-700 flex items-center space-x-2">
                 <Mail className="w-4 h-4" />
                 <span>Email Address</span>
               </label>
               {isEditingPersonal ? (
-                <input
-                  type="email"
-                  value={personalInfo.email}
-                  onChange={(e) => handlePersonalInfoChange('email', e.target.value)}
-                  className="w-full px-4 py-3 bg-gray-50/50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
-                  placeholder="Enter your email address"
-                />
+                <div>
+                  <input
+                    type="email"
+                    value={personalInfo.email}
+                    onChange={(e) => handlePersonalInfoChange('email', e.target.value)}
+                    className={`w-full px-4 py-3 bg-gray-50/50 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 ${
+                      errors.email ? 'border-red-300 bg-red-50/50' : 'border-gray-200'
+                    }`}
+                    placeholder="Enter your email address"
+                  />
+                  {errors.email && (
+                    <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+                  )}
+                </div>
               ) : (
                 <p className="px-4 py-3 bg-gray-50/30 rounded-xl text-gray-900 font-medium">
                   {personalInfo.email}
                 </p>
               )}
-            </div>            {/* Username */}
+            </div>{/* Username */}
             <div className="space-y-2">
               <label className="text-sm font-medium text-gray-700 flex items-center space-x-2">
                 <AtSign className="w-4 h-4" />
@@ -299,14 +429,17 @@ const Lprofile = () => {
                   Read Only
                 </span>
               </div>
-            </div>
-
-            {/* Edit Actions */}
+            </div>            {/* Edit Actions */}
             {isEditingPersonal && (
               <div className="flex items-center space-x-3 pt-4 border-t border-gray-100/50">
                 <button
                   onClick={handleSavePersonalInfo}
-                  className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:shadow-xl hover:shadow-blue-500/30 hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+                  disabled={!validateFullName(personalInfo.fullName) || !validateEmail(personalInfo.email)}
+                  className={`flex items-center space-x-2 px-6 py-3 rounded-xl transition-all duration-300 transform hover:scale-105 ${
+                    validateFullName(personalInfo.fullName) && validateEmail(personalInfo.email)
+                      ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:shadow-xl hover:shadow-blue-500/30 hover:from-blue-700 hover:to-purple-700'
+                      : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                  }`}
                 >
                   <Save className="w-4 h-4" />
                   <span className="font-medium">Save Changes</span>
@@ -400,9 +533,7 @@ const Lprofile = () => {
                         {showPassword.new ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                       </button>
                     </div>
-                  </div>
-
-                  {/* Confirm Password */}
+                  </div>                  {/* Confirm Password */}
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-gray-700">Confirm New Password</label>
                     <div className="relative">
@@ -410,7 +541,9 @@ const Lprofile = () => {
                         type={showPassword.confirm ? 'text' : 'password'}
                         value={passwordForm.confirmPassword}
                         onChange={(e) => handlePasswordChange('confirmPassword', e.target.value)}
-                        className="w-full px-4 py-3 pr-12 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                        className={`w-full px-4 py-3 pr-12 bg-white border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 ${
+                          errors.passwordMismatch ? 'border-red-300' : 'border-gray-200'
+                        }`}
                         placeholder="Confirm new password"
                       />
                       <button
@@ -421,12 +554,28 @@ const Lprofile = () => {
                         {showPassword.confirm ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                       </button>
                     </div>
-                  </div>
-
-                  <div className="flex items-center space-x-3 pt-2">
+                    {errors.passwordMismatch && (
+                      <p className="text-red-500 text-sm">{errors.passwordMismatch}</p>
+                    )}
+                  </div>                  <div className="flex items-center space-x-3 pt-2">
                     <button
                       onClick={handleChangePassword}
-                      className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:shadow-lg hover:shadow-blue-500/30 hover:from-blue-700 hover:to-purple-700 transition-all duration-300"
+                      disabled={
+                        !passwordForm.currentPassword ||
+                        !passwordForm.newPassword ||
+                        !passwordForm.confirmPassword ||
+                        passwordForm.newPassword !== passwordForm.confirmPassword ||
+                        passwordForm.newPassword.length < 6
+                      }
+                      className={`flex items-center space-x-2 px-4 py-2 rounded-xl transition-all duration-300 ${
+                        passwordForm.currentPassword &&
+                        passwordForm.newPassword &&
+                        passwordForm.confirmPassword &&
+                        passwordForm.newPassword === passwordForm.confirmPassword &&
+                        passwordForm.newPassword.length >= 6
+                          ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:shadow-lg hover:shadow-blue-500/30 hover:from-blue-700 hover:to-purple-700'
+                          : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                      }`}
                     >
                       <Save className="w-4 h-4" />
                       <span className="font-medium">Update Password</span>
