@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+/* Remove outline from navbar links */
+nav a:focus,
+nav a:active,
+nav button:focus,
+nav button:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove default browser focus styles for navbar links */
+nav a,
+nav button {
+  outline: none;
+}
