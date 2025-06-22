@@ -20,7 +20,6 @@ const Login = () => {
     { value: 'librarian', label: 'Library Management', icon: '📚' },
     { value: 'teacher', label: 'Teacher Portal', icon: '👨‍🏫' },
     { value: 'student', label: 'Student Portal', icon: '🎓' },
-    { value: 'hod', label: 'HOD Portal', icon: '👔' },
     { value: 'principal', label: 'Principal Portal', icon: '🏛️' },
     { value: 'hospital', label: 'Hospital Management', icon: '🏥' },
     { value: 'attendance', label: 'Attendance System', icon: '📋' }

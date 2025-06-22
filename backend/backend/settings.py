@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "Notification",
 
         'rest_framework_simplejwt.token_blacklist',
 

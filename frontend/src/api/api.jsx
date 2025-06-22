@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:8000';
+
+const API_BASE_URL = import.meta.env.VITE_BASE_URL
 
 const axiosInstance = axios.create({
     baseURL: API_BASE_URL,
@@ -48,6 +49,11 @@ const changePassword = async (data)=>{
     return resp.data;
 }
 
+const fetchNotifications = async ()=>{
+    const resp = await axiosInstance.get('/notification/');
+    return resp.data;
+}
 
-export {contactForm,logout,login,fetchUser,updateEmailAndFn,changePassword}
+
+export {contactForm,logout,login,fetchUser,updateEmailAndFn,changePassword,fetchNotifications}
 export default axiosInstance;

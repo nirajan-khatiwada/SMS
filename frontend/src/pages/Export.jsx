@@ -5,4 +5,6 @@ import Contact from "./Contact";
 import Login from "./Login";
 import LLayout from "./LMS/Layout";
 import Lprofile from "./LMS/Lprofile";
-export {Home, Layout, Pricing,Login,Contact,LLayout,Lprofile};
+import LPrinciple from "./LMS/LPrinciple";
+import LNotify from "./LMS/LNotify";
+export {Home, Layout, Pricing,Login,Contact,LLayout,Lprofile,LNotify,LPrinciple};

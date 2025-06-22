@@ -61,17 +61,7 @@ const OverView = () => {
       bgColor: 'bg-red-50',
       textColor: 'text-red-600'
     },
-    {
-      id: 'hms-hod',
-      title: 'HMS',
-      subtitle: 'HOD Management System',
-      icon: <UserCheck className="w-8 h-8" />,
-      description: 'Handle department oversight and evaluate staff.',
-      detailedInfo: 'Department head tools for staff evaluation, resource planning, and academic performance monitoring.',
-      color: 'from-orange-500 to-orange-600',
-      bgColor: 'bg-orange-50',
-      textColor: 'text-orange-600'
-    },
+  
     {
       id: 'pms',
       title: 'PMS',

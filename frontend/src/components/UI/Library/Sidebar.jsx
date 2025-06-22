@@ -113,11 +113,10 @@ const sidebarMenuItems = [
   {
     id: 'announcements',
     name: 'Principal Announcements',
-    path: '/lms/announcements',
+    path: '/librarian/principal/',
     icon: <Megaphone />,
     description: 'View principal notices and announcements'
-  },
-  {
+  },  {
     id: 'notifications',
     name: 'Send Notifications',
     icon: <Mail />,
@@ -126,16 +125,9 @@ const sidebarMenuItems = [
       {
         id: 'notify-students',
         name: 'Notify Students',
-        path: '/lms/notifications/students',
+        path: '/librarian/notify/',
         icon: <GraduationCap />,
         description: 'Send notifications to students'
-      },
-      {
-        id: 'notify-teachers',
-        name: 'Notify Teachers',
-        path: '/lms/notifications/teachers',
-        icon: <UserCheck />,
-        description: 'Send notifications to teachers'
       }
     ]
   },
@@ -175,6 +167,8 @@ const Sidebar = ({ isAdmin = true, className = '' }) => {
   })
 
 
+
+
 const {user,Logout} = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
   const [expandedMenus, setExpandedMenus] = useState({});
@@ -197,6 +191,7 @@ const {user,Logout} = useContext(AuthContext);
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+  console.log(data)
 
   // Auto-expand menu if current path matches
   useEffect(() => {
@@ -383,7 +378,7 @@ const {user,Logout} = useContext(AuthContext);
           <div className="p-4 border-t border-gray-100/50">
             <div className="flex items-center space-x-3 p-3 bg-gray-50/50 rounded-xl">
               <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center">
-                <User className="w-4 h-4 text-white" />
+                <img src={import.meta.env.VITE_BASE_URL + data?.picture} alt="User Avatar" className="w-8 h-8 rounded-full object-cover" />
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-sm font-medium text-gray-900 truncate">

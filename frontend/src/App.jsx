@@ -10,6 +10,8 @@ import {
   Contact,
   Login,
   LLayout,
+  LNotify,
+  LPrinciple
 } from "./pages/Export.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -66,6 +68,14 @@ const router = createBrowserRouter([
                   {
                     path: "profile",
                     element: <Lprofile />,
+                  },
+                  {
+                    path: "notify",
+                    element: <LNotify />,
+                  },
+                  {
+                    path: "principal",
+                    element: <LPrinciple />,
                   }
                 ]
               },

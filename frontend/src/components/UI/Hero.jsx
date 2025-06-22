@@ -13,7 +13,6 @@ const Hero = () => {
     { icon: <Calendar className="w-5 h-5" />, name: "Attendance", color: "from-green-500 to-green-600" },
     { icon: <Users className="w-5 h-5" />, name: "Faculty", color: "from-purple-500 to-purple-600" },
     { icon: <Stethoscope className="w-5 h-5" />, name: "Hospital", color: "from-red-500 to-red-600" },
-    { icon: <UserCheck className="w-5 h-5" />, name: "HOD", color: "from-orange-500 to-orange-600" },
     { icon: <Shield className="w-5 h-5" />, name: "Principal", color: "from-indigo-500 to-indigo-600" },
     { icon: <GraduationCap className="w-5 h-5" />, name: "Student", color: "from-teal-500 to-teal-600" },
   ];
@@ -75,7 +74,7 @@ const Hero = () => {
             {/* Stats or Features */}
             <div className="grid grid-cols-3 gap-6 pt-8 border-t border-gray-100">
               <div className="text-center">
-                <div className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">8+</div>
+                <div className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">6+</div>
                 <div className="text-sm text-gray-600 font-medium">Integrated Portals</div>
               </div>
               <div className="text-center">
