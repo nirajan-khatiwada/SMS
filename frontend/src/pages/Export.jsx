@@ -7,4 +7,5 @@ import LLayout from "./LMS/Layout";
 import Lprofile from "./LMS/Lprofile";
 import LPrinciple from "./LMS/LPrinciple";
 import LNotify from "./LMS/LNotify";
-export {Home, Layout, Pricing,Login,Contact,LLayout,Lprofile,LNotify,LPrinciple};
+import LMClass from "./LMS/LMClass";
+export {Home, Layout, Pricing,Login,Contact,LLayout,Lprofile,LNotify,LMClass,LPrinciple};

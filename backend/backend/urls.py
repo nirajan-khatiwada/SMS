@@ -25,5 +25,6 @@ urlpatterns = [
     path('auth/', include('customauth.urls')),
     path('user/', include('customuser.urls')),
     path('notification/', include('Notification.urls')),
+    path('lms/', include('lms.urls')),
 ]+static('media/', document_root=settings.MEDIA_ROOT)
 

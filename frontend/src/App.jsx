@@ -11,7 +11,8 @@ import {
   Login,
   LLayout,
   LNotify,
-  LPrinciple
+  LPrinciple,
+  LMClass
 } from "./pages/Export.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -76,7 +77,11 @@ const router = createBrowserRouter([
                   {
                     path: "principal",
                     element: <LPrinciple />,
-                  }
+                  },
+                  {
+                    path: "manage-class",
+                    element: <LMClass />,
+                  },
                 ]
               },
             ],

@@ -18,8 +18,6 @@ import { useQuery } from "@tanstack/react-query";
 
 import { fetchNotifications } from "../../api/api";
 
-const departments = ["All", "Principal's Office"];
-
 const LoadingSkeleton = () => (
   <div className="space-y-4">
     {[1, 2, 3, 4].map((item) => (
@@ -289,7 +287,6 @@ const AnnouncementCard = ({
 const LPrinciple = () => {  const [filteredAnnouncements, setFilteredAnnouncements] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedPriority, setSelectedPriority] = useState("all");
-  const [selectedDepartment, setSelectedDepartment] = useState("All");
   const [sortBy, setSortBy] = useState("newest");
   const [selectedAnnouncement, setSelectedAnnouncement] = useState(null);
   const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
@@ -319,21 +316,12 @@ const LPrinciple = () => {  const [filteredAnnouncements, setFilteredAnnouncemen
           announcement.subject
             .toLowerCase()
             .includes(searchQuery.toLowerCase()) ||
-          announcement.message.toLowerCase().includes(searchQuery.toLowerCase())
+          announcement.message?.toLowerCase().includes(searchQuery.toLowerCase())
       );
-    }
-
-    // Priority filter (using status field from API)
+    }    // Priority filter (using status field from API)
     if (selectedPriority !== "all") {
       filtered = filtered.filter(
         (announcement) => announcement.status === selectedPriority
-      );
-    }
-
-    // Department filter (using sender field from API)
-    if (selectedDepartment !== "All") {
-      filtered = filtered.filter(
-        (announcement) => announcement.sender === selectedDepartment
       );
     }
 
@@ -347,7 +335,7 @@ const LPrinciple = () => {  const [filteredAnnouncements, setFilteredAnnouncemen
     });
 
     setFilteredAnnouncements(filtered);
-  }, [notifications, searchQuery, selectedPriority, selectedDepartment, sortBy]);  const handleRefresh = () => {
+  }, [notifications, searchQuery, selectedPriority, sortBy]);const handleRefresh = () => {
     refetch();
   };
 
@@ -384,11 +372,9 @@ const LPrinciple = () => {  const [filteredAnnouncements, setFilteredAnnouncemen
               <div className="w-12 h-12 bg-gray-200 rounded-xl"></div>
             </div>
           </div>
-          
-          {/* Filters Skeleton */}
+            {/* Filters Skeleton */}
           <div className="bg-white/70 backdrop-blur-xl rounded-xl p-6 shadow-sm border border-gray-100/50 animate-pulse">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              <div className="h-12 bg-gray-200 rounded-xl"></div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               <div className="h-12 bg-gray-200 rounded-xl"></div>
               <div className="h-12 bg-gray-200 rounded-xl"></div>
               <div className="h-12 bg-gray-200 rounded-xl"></div>
@@ -437,10 +423,9 @@ const LPrinciple = () => {  const [filteredAnnouncements, setFilteredAnnouncemen
               />
             </button>
           </div>
-        </div>
-        {/* Filters and Search */}
+        </div>        {/* Filters and Search */}
         <div className="bg-white/70 backdrop-blur-xl rounded-xl p-6 shadow-sm border border-gray-100/50">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {/* Search */}
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
@@ -460,22 +445,9 @@ const LPrinciple = () => {  const [filteredAnnouncements, setFilteredAnnouncemen
               className="px-4 py-3 bg-gray-50/50 border border-gray-200/50 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/50 transition-all duration-300"
             >
               <option value="all">All Priorities</option>
-              <option value="urgent">🔴 Urgent</option>
-              <option value="normal">🟡 Normal</option>
-              <option value="info">🔵 Info</option>
-            </select>
-
-            {/* Department Filter */}
-            <select
-              value={selectedDepartment}
-              onChange={(e) => setSelectedDepartment(e.target.value)}
-              className="px-4 py-3 bg-gray-50/50 border border-gray-200/50 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/50 transition-all duration-300"
-            >
-              {departments.map((dept) => (
-                <option key={dept} value={dept}>
-                  {dept}
-                </option>
-              ))}
+              <option value="Urgent">🔴 Urgent</option>
+              <option value="Normal">🟡 Normal</option>
+              <option value="Info">🔵 Info</option>
             </select>
 
             {/* Sort */}
@@ -486,7 +458,8 @@ const LPrinciple = () => {  const [filteredAnnouncements, setFilteredAnnouncemen
             >
               <option value="newest">Newest First</option>
               <option value="oldest">Oldest First</option>
-            </select>          </div>
+            </select>
+          </div>
         </div>
 
         {/* Results Summary */}
@@ -519,22 +492,18 @@ const LPrinciple = () => {  const [filteredAnnouncements, setFilteredAnnouncemen
               </div>
               <h3 className="text-lg font-semibold text-gray-900 mb-2">
                 No announcements found
-              </h3>
-              <p className="text-gray-600 mb-4">
+              </h3>              <p className="text-gray-600 mb-4">
                 {searchQuery ||
-                selectedPriority !== "all" ||
-                selectedDepartment !== "All"
+                selectedPriority !== "all"
                   ? "Try adjusting your filters to see more announcements."
                   : "There are no announcements available at the moment."}
               </p>
               {(searchQuery ||
-                selectedPriority !== "all" ||
-                selectedDepartment !== "All") && (
+                selectedPriority !== "all") && (
                 <button
                   onClick={() => {
                     setSearchQuery("");
                     setSelectedPriority("all");
-                    setSelectedDepartment("All");
                   }}
                   className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-300"
                 >

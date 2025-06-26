@@ -1,8 +1,9 @@
-import React, { useState, useEffect,useContext } from 'react';
+import React, { useState, useEffect,useContext, use } from 'react';
 import AuthContext from '../../../context/Auth';
 import { useQuery } from '@tanstack/react-query';
 import { fetchUser } from '../../../api/api';
 import {  NavLink, useLocation } from 'react-router-dom';
+import useTitle from '../../../hooks/pageTitle';
 import {
   BarChart3,
   BookOpen,
@@ -60,18 +61,12 @@ const sidebarMenuItems = [
       },
       {
         id: 'categories',
-        name: 'Manage Categories',
-        path: '/lms/books/categories',
+        name: 'Manage Class',
+        path: '/librarian/manage-class',
         icon: <FolderOpen />,
         description: 'Organize book categories'
       },
-      {
-        id: 'authors',
-        name: 'Authors & Publishers',
-        path: '/lms/books/authors',
-        icon: <Users />,
-        description: 'Manage authors and publishers'
-      }
+    
     ]
   },
   {
@@ -101,13 +96,7 @@ const sidebarMenuItems = [
         icon: <Clock />,
         description: 'Manage overdue books and fines'
       },
-      {
-        id: 'reserved',
-        name: 'Reserved Books',
-        path: '/lms/circulation/reserved',
-        icon: <Bookmark />,
-        description: 'View and manage reservations'
-      }
+      
     ]
   },
   {
@@ -157,6 +146,8 @@ const sidebarMenuItems = [
 ];
 
 const Sidebar = ({ isAdmin = true, className = '' }) => {
+
+  useTitle('Library Management System');
   
 
   const {data, isPending,error,isError } = useQuery({
@@ -260,7 +251,7 @@ const {user,Logout} = useContext(AuthContext);
       {isMobile && (
         <button
           onClick={toggleSidebar}
-          className="fixed top-24 left-4 z-50 p-3 bg-white/90 backdrop-blur-xl rounded-xl shadow-lg border border-gray-100/50 hover:bg-gray-50/80 transition-all duration-300 md:hidden"
+          className="fixed top-6  sm:top-24 left-4 z-50 p-3 bg-white/90 backdrop-blur-xl rounded-xl shadow-lg border border-gray-100/50 hover:bg-gray-50/80 transition-all duration-300 md:hidden"
           aria-label="Toggle sidebar"
         >
           {isOpen ? <X size={20} /> : <Menu size={20} />}
