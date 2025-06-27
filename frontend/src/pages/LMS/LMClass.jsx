@@ -432,7 +432,7 @@ const LMClass = () => {
             </div>
 
             {/* Filter Options */}
-            <div className="flex space-x-2">
+            <div className="flex flex-wrap gap-2">
               {[
                 { key: 'all', label: 'Show All' },
                 { key: 'classes', label: 'Only Classes' },
@@ -441,7 +441,7 @@ const LMClass = () => {
                 <button
                   key={option.key}
                   onClick={() => setFilter(option.key)}
-                  className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+                  className={`px-3 sm:px-4 py-2 rounded-lg font-medium transition-all duration-300 text-sm ${
                     filter === option.key
                       ? 'bg-blue-600 text-white shadow-sm'
                       : 'bg-gray-100/50 text-gray-600 hover:bg-gray-200/50'
@@ -453,8 +453,8 @@ const LMClass = () => {
             </div>
           </div>
 
-          {/* Table */}
-          <div className="overflow-x-auto">
+          {/* Table - Desktop */}
+          <div className="hidden md:block overflow-x-auto">
             <table className="w-full">
               <thead>
                 <tr className="border-b border-gray-200/50">
@@ -559,6 +559,107 @@ const LMClass = () => {
                 )}
               </tbody>
             </table>
+          </div>
+
+          {/* Card Layout - Mobile */}
+          <div className="md:hidden space-y-3">
+            {filteredHistory.length === 0 ? (
+              <div className="text-center py-8 text-gray-500">
+                <div className="flex flex-col items-center space-y-2">
+                  <BookOpen className="w-12 h-12 text-gray-300" />
+                  <span>No items found</span>
+                </div>
+              </div>
+            ) : (
+              filteredHistory.map((item) => (
+                <div key={item.uniqueKey} className="bg-white/50 rounded-lg p-4 border border-gray-200/50 hover:shadow-md transition-all duration-200">
+                  <div className="flex items-start justify-between mb-3">
+                    <div className="flex items-center space-x-2">
+                      <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium ${
+                        item.type === 'Class' 
+                          ? 'bg-blue-50/80 text-blue-600 border border-blue-200/50' 
+                          : 'bg-purple-50/80 text-purple-600 border border-purple-200/50'
+                      }`}>
+                        {item.type === 'Class' ? <BookOpen size={12} className="mr-1" /> : <Users size={12} className="mr-1" />}
+                        {item.type}
+                      </span>
+                    </div>
+                    
+                    {editingItem === item.uniqueKey ? (
+                      <div className="flex space-x-2">
+                        <button
+                          onClick={saveEdit}
+                          disabled={updateClassMutation.isPending || updateSectionMutation.isPending}
+                          className="p-2 text-green-600 hover:bg-green-50 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg transition-colors duration-200"
+                        >
+                          <CheckCircle size={18} />
+                        </button>
+                        <button
+                          onClick={cancelEdit}
+                          className="p-2 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors duration-200"
+                        >
+                          <X size={18} />
+                        </button>
+                      </div>
+                    ) : (
+                      <div className="flex space-x-2">
+                        <button
+                          onClick={() => startEdit(item)}
+                          className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors duration-200"
+                        >
+                          <Edit3 size={18} />
+                        </button>
+                        <button
+                          onClick={() => handleDelete(item.id, item.type)}
+                          disabled={deleteClassMutation.isPending || deleteSectionMutation.isPending}
+                          className="p-2 text-red-600 hover:bg-red-50 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg transition-colors duration-200"
+                        >
+                          <Trash2 size={18} />
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                  
+                  <div className="space-y-2">
+                    {item.type === 'Class' && (
+                      <div>
+                        <label className="text-xs font-medium text-gray-500 uppercase tracking-wide">Class Name</label>
+                        {editingItem === item.uniqueKey ? (
+                          <input
+                            type="text"
+                            value={editValue}
+                            onChange={(e) => setEditValue(e.target.value)}
+                            className="w-full mt-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 bg-white"
+                            onKeyPress={(e) => e.key === 'Enter' && saveEdit()}
+                            autoFocus
+                          />
+                        ) : (
+                          <div className="mt-1 font-medium text-gray-900">{item.name}</div>
+                        )}
+                      </div>
+                    )}
+                    
+                    {item.type === 'Section' && (
+                      <div>
+                        <label className="text-xs font-medium text-gray-500 uppercase tracking-wide">Section Name</label>
+                        {editingItem === item.uniqueKey ? (
+                          <input
+                            type="text"
+                            value={editValue}
+                            onChange={(e) => setEditValue(e.target.value)}
+                            className="w-full mt-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 bg-white"
+                            onKeyPress={(e) => e.key === 'Enter' && saveEdit()}
+                            autoFocus
+                          />
+                        ) : (
+                          <div className="mt-1 font-medium text-gray-900">{item.name}</div>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))
+            )}
           </div>
         </div>
       </div>

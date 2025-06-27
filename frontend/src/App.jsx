@@ -9,12 +9,12 @@ import {
   Pricing,
   Contact,
   Login,
-  LLayout,
-  LNotify,
-  LPrinciple,
+  LLayout,  LPrinciple,
   LMClass,
   LABook,
-  LBookHistory
+  LBookHistory,
+  LIBook,
+  LRBook
 } from "./pages/Export.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -73,10 +73,6 @@ const router = createBrowserRouter([
                     element: <Lprofile />,
                   },
                   {
-                    path: "notify",
-                    element: <LNotify />,
-                  },
-                  {
                     path: "principal",
                     element: <LPrinciple />,
                   },
@@ -91,7 +87,15 @@ const router = createBrowserRouter([
                   {
                     path: "all-books",
                     element: <LBookHistory />,
-                  }
+                  },
+                  {
+                    path: "issue-books",
+                    element: <LIBook />,
+                  },
+                  {
+                    path: "return",
+                    element: <LRBook />,
+                  },
                 ]
               },
             ],

@@ -3,8 +3,7 @@ from django.contrib import admin
 # Register your models here.
 
 
-from .models import Class, Section,Book
+from .models import Book,BookIssue
 
-admin.site.register(Class)
-admin.site.register(Section)
 admin.site.register(Book)
+admin.site.register(BookIssue)

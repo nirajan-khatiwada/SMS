@@ -78,14 +78,14 @@ const sidebarMenuItems = [
       {
         id: 'issue-book',
         name: 'Issue Book',
-        path: '/lms/circulation/issue',
+        path: '/librarian/issue-books/',
         icon: <Send />,
         description: 'Issue books to members'
       },
       {
         id: 'return-book',
         name: 'Return Book',
-        path: '/lms/circulation/return',
+        path: '/librarian/return/',
         icon: <Undo2 />,
         description: 'Process book returns'
       },
@@ -105,21 +105,7 @@ const sidebarMenuItems = [
     path: '/librarian/principal/',
     icon: <Megaphone />,
     description: 'View principal notices and announcements'
-  },  {
-    id: 'notifications',
-    name: 'Send Notifications',
-    icon: <Mail />,
-    hasSubmenu: true,
-    submenu: [
-      {
-        id: 'notify-students',
-        name: 'Notify Students',
-        path: '/librarian/notify/',
-        icon: <GraduationCap />,
-        description: 'Send notifications to students'
-      }
-    ]
-  },
+  },  
   {
     id: 'account',
     name: 'Account',
