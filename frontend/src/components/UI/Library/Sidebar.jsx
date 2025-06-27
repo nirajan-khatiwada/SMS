@@ -48,14 +48,14 @@ const sidebarMenuItems = [
       {
         id: 'all-books',
         name: 'All Books',
-        path: '/lms/books/all',
+        path: '/librarian/all-books/',
         icon: <Library />,
         description: 'View and search all books'
       },
       {
         id: 'add-book',
         name: 'Add New Book',
-        path: '/lms/books/add',
+        path: '/librarian/add-book/',
         icon: <Plus />,
         description: 'Add new book to library'
       },
@@ -182,7 +182,7 @@ const {user,Logout} = useContext(AuthContext);
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-  console.log(data)
+ 
 
   // Auto-expand menu if current path matches
   useEffect(() => {

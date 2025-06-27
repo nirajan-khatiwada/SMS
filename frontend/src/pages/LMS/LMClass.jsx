@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { 
   Plus, 
   Save, 
@@ -162,10 +162,10 @@ const LMClass = () => {
   });
 
   // Combine classes and sections into one history array
-  const combinedHistory = [
+  const combinedHistory = useMemo(() => [
     ...classes.map(cls => ({ ...cls, type: 'Class', uniqueKey: `class-${cls.id}` })),
     ...sections.map(section => ({ ...section, type: 'Section', uniqueKey: `section-${section.id}` }))
-  ];
+  ], [classes, sections]);
 
   // Filter and search logic
   useEffect(() => {
@@ -262,7 +262,7 @@ const LMClass = () => {
   };
 
   // Loading state
-  const isLoading = classesLoading || sectionsLoading;
+  const isLoading = classesLoading && sectionsLoading;
   
   // Error handling
   if (classesError || sectionsError) {
@@ -308,7 +308,7 @@ const LMClass = () => {
         {/* Header */}
         <div className="bg-white/70 backdrop-blur-xl rounded-xl p-6 shadow-sm border border-gray-100/50">
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center">
+            <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center">
               <BookOpen className="w-6 h-6 text-white" />
             </div>
             <div>

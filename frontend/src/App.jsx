@@ -12,7 +12,9 @@ import {
   LLayout,
   LNotify,
   LPrinciple,
-  LMClass
+  LMClass,
+  LABook,
+  LBookHistory
 } from "./pages/Export.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -82,6 +84,14 @@ const router = createBrowserRouter([
                     path: "manage-class",
                     element: <LMClass />,
                   },
+                  {
+                    path: "add-book",
+                    element: <LABook />,
+                  },
+                  {
+                    path: "all-books",
+                    element: <LBookHistory />,
+                  }
                 ]
               },
             ],

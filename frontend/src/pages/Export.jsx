@@ -8,4 +8,6 @@ import Lprofile from "./LMS/Lprofile";
 import LPrinciple from "./LMS/LPrinciple";
 import LNotify from "./LMS/LNotify";
 import LMClass from "./LMS/LMClass";
-export {Home, Layout, Pricing,Login,Contact,LLayout,Lprofile,LNotify,LMClass,LPrinciple};
+import LABook from "./LMS/LABook";
+import LBookHistory from "./LMS/LBookHistory";
+export {Home, Layout, Pricing,Login,Contact,LLayout,Lprofile,LNotify,LMClass,LPrinciple,LABook,LBookHistory};
