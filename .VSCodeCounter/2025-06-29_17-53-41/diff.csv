@@ -1,0 +1,10 @@
+"filename", "language", "Markdown", "JavaScript", "JavaScript JSX", "pip requirements", "Python", "comment", "blank", "total"
+"d:\project\README.md", "Markdown", 549, 0, 0, 0, 0, 0, 136, 685
+"d:\project\backend\requirements.txt", "pip requirements", 0, 0, 0, 19, 0, 0, 0, 19
+"d:\project\frontend\src\pages\LMS\LDashboard.jsx", "JavaScript JSX", 0, 0, 419, 0, 0, 15, 32, 466
+"d:\project\frontend\src\pages\LMS\LRBook.jsx", "JavaScript JSX", 0, 0, 8, 0, 0, 0, 0, 8
+"d:\project\frontend\tailwind.config.js", "JavaScript", 0, 4, 0, 0, 0, 0, 0, 4
+"d:\project\frontend\vite.config.js", "JavaScript", 0, 10, 0, 0, 0, 2, 1, 13
+"d:\project\lol.md", "Markdown", -437, 0, 0, 0, 0, 0, -75, -512
+"d:\project\main.py", "Python", 0, 0, 0, 0, -49, 0, -8, -57
+"Total", "-", 112, 14, 427, 19, -49, 17, 86, 626

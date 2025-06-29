@@ -1,5 +1,4 @@
-from email import message
-from turtle import mode
+
 from django.db import models
 from django.contrib.auth import get_user_model
 

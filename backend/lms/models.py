@@ -1,6 +1,4 @@
-from encodings import mac_arabic
-from pyexpat import model
-from turtle import mode
+
 from django.db import models
 from student.models import Class, Section
 from student.models import StudentProfile
