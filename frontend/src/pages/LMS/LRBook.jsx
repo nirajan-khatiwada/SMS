@@ -141,6 +141,14 @@ const ReturnModal = ({ book, isOpen, onClose, onReturn }) => {
                 <p className="font-medium text-gray-900">{book.student?.id || 'N/A'}</p>
               </div>
               <div>
+                <p className="text-sm text-gray-500">Class</p>
+                <p className="font-medium text-gray-900">{book.student?.class_name?.name || 'N/A'}</p>
+              </div>
+              <div>
+                <p className="text-sm text-gray-500">Section</p>
+                <p className="font-medium text-gray-900">{book.student?.section?.name || 'N/A'}</p>
+              </div>
+              <div>
                 <p className="text-sm text-gray-500">Issue Date</p>
                 <p className="font-medium text-gray-900">{new Date(book.issue_date).toLocaleDateString()}</p>
               </div>
