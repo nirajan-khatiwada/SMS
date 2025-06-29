@@ -35,7 +35,7 @@ const sidebarMenuItems = [
   {
     id: 'dashboard',
     name: 'Dashboard',
-    path: '/lms/dashboard',
+    path: '/librarian/',
     icon: <BarChart3 />,
     description: 'Overview of library statistics'
   },
@@ -90,9 +90,9 @@ const sidebarMenuItems = [
         description: 'Process book returns'
       },
       {
-        id: 'overdue',
-        name: 'Overdue & Fine Management',
-        path: '/lms/circulation/overdue',
+        id: 'history',
+        name: 'Returned Book',
+        path: '/librarian/history/',
         icon: <Clock />,
         description: 'Manage overdue books and fines'
       },

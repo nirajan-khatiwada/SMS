@@ -1,0 +1,17 @@
+"filename", "language", "Markdown", "JavaScript JSX", "Python", "comment", "blank", "total"
+"d:\project\backend\lms\admin.py", "Python", 0, 0, 1, 0, 1, 2
+"d:\project\backend\lms\migrations\0007_bookreturn.py", "Python", 0, 0, 16, 1, 6, 23
+"d:\project\backend\lms\migrations\0008_bookissue_has_returned_bookreturn_fine_amount.py", "Python", 0, 0, 17, 1, 6, 24
+"d:\project\backend\lms\migrations\0009_bookreturn_condition_bookreturn_note.py", "Python", 0, 0, 17, 1, 6, 24
+"d:\project\backend\lms\models.py", "Python", 0, 0, 10, 0, 0, 10
+"d:\project\backend\lms\serializer.py", "Python", 0, 0, 43, 1, 20, 64
+"d:\project\backend\lms\urls.py", "Python", 0, 0, 1, 0, 0, 1
+"d:\project\backend\lms\views.py", "Python", 0, 0, 14, 0, 1, 15
+"d:\project\frontend\src\App.jsx", "JavaScript JSX", 0, 1, 0, 0, 0, 1
+"d:\project\frontend\src\api\libriary.jsx", "JavaScript JSX", 0, 15, 0, 0, 3, 18
+"d:\project\frontend\src\pages\Export.jsx", "JavaScript JSX", 0, 1, 0, 0, 0, 1
+"d:\project\frontend\src\pages\LMS\LDashboard.jsx", "JavaScript JSX", 0, 7, 0, 0, 2, 9
+"d:\project\frontend\src\pages\LMS\LIR.jsx", "JavaScript JSX", 0, -167, 0, -24, -16, -207
+"d:\project\frontend\src\pages\LMS\LRBook.jsx", "JavaScript JSX", 0, 403, 0, 9, 44, 456
+"d:\project\lol.md", "Markdown", 437, 0, 0, 0, 75, 512
+"Total", "-", 437, 260, 119, -11, 148, 953

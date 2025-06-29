@@ -14,7 +14,9 @@ import {
   LABook,
   LBookHistory,
   LIBook,
-  LRBook
+  LRBook,
+  LIR,
+  LDashboard
 } from "./pages/Export.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -66,7 +68,7 @@ const router = createBrowserRouter([
                 children: [
                   {
                     index: true,
-                    element: <h1>Welcome to Librarian Dashboard</h1>,
+                    element:<LDashboard/>,
                   },
                   {
                     path: "profile",
@@ -96,6 +98,11 @@ const router = createBrowserRouter([
                     path: "return",
                     element: <LRBook />,
                   },
+                  {
+                    path: "history",
+                    element: <LIR />,
+
+                  }
                 ]
               },
             ],

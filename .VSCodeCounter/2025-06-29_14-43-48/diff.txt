@@ -1,0 +1,53 @@
+Date : 2025-06-29 14:43:48
+Directory : d:\project
+Total : 15 files,  816 codes, -11 comments, 148 blanks, all 953 lines
+
+Languages
++----------------+------------+------------+------------+------------+------------+
+| language       | files      | code       | comment    | blank      | total      |
++----------------+------------+------------+------------+------------+------------+
+| Markdown       |          1 |        437 |          0 |         75 |        512 |
+| JavaScript JSX |          6 |        260 |        -15 |         33 |        278 |
+| Python         |          8 |        119 |          4 |         40 |        163 |
++----------------+------------+------------+------------+------------+------------+
+
+Directories
++-----------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                    | files      | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                       |         15 |        816 |        -11 |        148 |        953 |
+| . (Files)                                                                               |          1 |        437 |          0 |         75 |        512 |
+| backend                                                                                 |          8 |        119 |          4 |         40 |        163 |
+| backend\lms                                                                             |          8 |        119 |          4 |         40 |        163 |
+| backend\lms (Files)                                                                     |          5 |         69 |          1 |         22 |         92 |
+| backend\lms\migrations                                                                  |          3 |         50 |          3 |         18 |         71 |
+| frontend                                                                                |          6 |        260 |        -15 |         33 |        278 |
+| frontend\src                                                                            |          6 |        260 |        -15 |         33 |        278 |
+| frontend\src (Files)                                                                    |          1 |          1 |          0 |          0 |          1 |
+| frontend\src\api                                                                        |          1 |         15 |          0 |          3 |         18 |
+| frontend\src\pages                                                                      |          4 |        244 |        -15 |         30 |        259 |
+| frontend\src\pages (Files)                                                              |          1 |          1 |          0 |          0 |          1 |
+| frontend\src\pages\LMS                                                                  |          3 |        243 |        -15 |         30 |        258 |
++-----------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-----------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| filename                                                                                | language       | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| d:\project\backend\lms\admin.py                                                         | Python         |          1 |          0 |          1 |          2 |
+| d:\project\backend\lms\migrations\0007_bookreturn.py                                    | Python         |         16 |          1 |          6 |         23 |
+| d:\project\backend\lms\migrations\0008_bookissue_has_returned_bookreturn_fine_amount.py | Python         |         17 |          1 |          6 |         24 |
+| d:\project\backend\lms\migrations\0009_bookreturn_condition_bookreturn_note.py          | Python         |         17 |          1 |          6 |         24 |
+| d:\project\backend\lms\models.py                                                        | Python         |         10 |          0 |          0 |         10 |
+| d:\project\backend\lms\serializer.py                                                    | Python         |         43 |          1 |         20 |         64 |
+| d:\project\backend\lms\urls.py                                                          | Python         |          1 |          0 |          0 |          1 |
+| d:\project\backend\lms\views.py                                                         | Python         |         14 |          0 |          1 |         15 |
+| d:\project\frontend\src\App.jsx                                                         | JavaScript JSX |          1 |          0 |          0 |          1 |
+| d:\project\frontend\src\api\libriary.jsx                                                | JavaScript JSX |         15 |          0 |          3 |         18 |
+| d:\project\frontend\src\pages\Export.jsx                                                | JavaScript JSX |          1 |          0 |          0 |          1 |
+| d:\project\frontend\src\pages\LMS\LDashboard.jsx                                        | JavaScript JSX |          7 |          0 |          2 |          9 |
+| d:\project\frontend\src\pages\LMS\LIR.jsx                                               | JavaScript JSX |       -167 |        -24 |        -16 |       -207 |
+| d:\project\frontend\src\pages\LMS\LRBook.jsx                                            | JavaScript JSX |        403 |          9 |         44 |        456 |
+| d:\project\lol.md                                                                       | Markdown       |        437 |          0 |         75 |        512 |
+| Total                                                                                   |                |        816 |        -11 |        148 |        953 |
++-----------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+

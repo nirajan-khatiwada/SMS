@@ -1,0 +1,112 @@
+"filename", "language", "Markdown", "Python", "JavaScript", "XML", "JavaScript JSX", "PostCSS", "JSON", "Django HTML", "comment", "blank", "total"
+"d:\project\README.md", "Markdown", 214, 0, 0, 0, 0, 0, 0, 0, 0, 66, 280
+"d:\project\backend\Notification\__init__.py", "Python", 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"d:\project\backend\Notification\admin.py", "Python", 0, 3, 0, 0, 0, 0, 0, 0, 1, 2, 6
+"d:\project\backend\Notification\apps.py", "Python", 0, 4, 0, 0, 0, 0, 0, 0, 0, 3, 7
+"d:\project\backend\Notification\migrations\0001_initial.py", "Python", 0, 22, 0, 0, 0, 0, 0, 0, 1, 7, 30
+"d:\project\backend\Notification\migrations\0002_notification_message.py", "Python", 0, 12, 0, 0, 0, 0, 0, 0, 1, 6, 19
+"d:\project\backend\Notification\migrations\__init__.py", "Python", 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"d:\project\backend\Notification\models.py", "Python", 0, 20, 0, 0, 0, 0, 0, 0, 1, 7, 28
+"d:\project\backend\Notification\serializer.py", "Python", 0, 10, 0, 0, 0, 0, 0, 0, 0, 6, 16
+"d:\project\backend\Notification\tests.py", "Python", 0, 1, 0, 0, 0, 0, 0, 0, 1, 2, 4
+"d:\project\backend\Notification\urls.py", "Python", 0, 5, 0, 0, 0, 0, 0, 0, 0, 2, 7
+"d:\project\backend\Notification\views.py", "Python", 0, 13, 0, 0, 0, 0, 0, 0, 0, 2, 15
+"d:\project\backend\backend\__init__.py", "Python", 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"d:\project\backend\backend\asgi.py", "Python", 0, 4, 0, 0, 0, 0, 0, 0, 8, 5, 17
+"d:\project\backend\backend\settings.py", "Python", 0, 83, 0, 0, 0, 0, 0, 0, 27, 41, 151
+"d:\project\backend\backend\urls.py", "Python", 0, 13, 0, 0, 0, 0, 0, 0, 16, 3, 32
+"d:\project\backend\backend\wsgi.py", "Python", 0, 4, 0, 0, 0, 0, 0, 0, 8, 5, 17
+"d:\project\backend\contactform\__init__.py", "Python", 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"d:\project\backend\contactform\admin.py", "Python", 0, 3, 0, 0, 0, 0, 0, 0, 1, 1, 5
+"d:\project\backend\contactform\apps.py", "Python", 0, 4, 0, 0, 0, 0, 0, 0, 0, 3, 7
+"d:\project\backend\contactform\migrations\0001_initial.py", "Python", 0, 20, 0, 0, 0, 0, 0, 0, 1, 7, 28
+"d:\project\backend\contactform\migrations\__init__.py", "Python", 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"d:\project\backend\contactform\models.py", "Python", 0, 10, 0, 0, 0, 0, 0, 0, 1, 3, 14
+"d:\project\backend\contactform\serializer.py", "Python", 0, 7, 0, 0, 0, 0, 0, 0, 0, 1, 8
+"d:\project\backend\contactform\urls.py", "Python", 0, 5, 0, 0, 0, 0, 0, 0, 0, 1, 6
+"d:\project\backend\contactform\views.py", "Python", 0, 12, 0, 0, 0, 0, 0, 0, 1, 3, 16
+"d:\project\backend\customauth\apps.py", "Python", 0, 4, 0, 0, 0, 0, 0, 0, 0, 3, 7
+"d:\project\backend\customauth\serializer.py", "Python", 0, 37, 0, 0, 0, 0, 0, 0, 0, 7, 44
+"d:\project\backend\customauth\tests.py", "Python", 0, 1, 0, 0, 0, 0, 0, 0, 1, 2, 4
+"d:\project\backend\customauth\urls.py", "Python", 0, 8, 0, 0, 0, 0, 0, 0, 0, 2, 10
+"d:\project\backend\customauth\views.py", "Python", 0, 22, 0, 0, 0, 0, 0, 0, 0, 6, 28
+"d:\project\backend\customuser\__init__.py", "Python", 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"d:\project\backend\customuser\admin.py", "Python", 0, 24, 0, 0, 0, 0, 0, 0, 0, 7, 31
+"d:\project\backend\customuser\apps.py", "Python", 0, 4, 0, 0, 0, 0, 0, 0, 0, 3, 7
+"d:\project\backend\customuser\migrations\0001_initial.py", "Python", 0, 30, 0, 0, 0, 0, 0, 0, 1, 7, 38
+"d:\project\backend\customuser\migrations\__init__.py", "Python", 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"d:\project\backend\customuser\models.py", "Python", 0, 42, 0, 0, 0, 0, 0, 0, 1, 11, 54
+"d:\project\backend\customuser\serializer.py", "Python", 0, 28, 0, 0, 0, 0, 0, 0, 0, 4, 32
+"d:\project\backend\customuser\urls.py", "Python", 0, 6, 0, 0, 0, 0, 0, 0, 0, 1, 7
+"d:\project\backend\customuser\views.py", "Python", 0, 29, 0, 0, 0, 0, 0, 0, 0, 6, 35
+"d:\project\backend\debug_admin.py", "Python", 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"d:\project\backend\lms\__init__.py", "Python", 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"d:\project\backend\lms\admin.py", "Python", 0, 4, 0, 0, 0, 0, 0, 0, 1, 4, 9
+"d:\project\backend\lms\apps.py", "Python", 0, 4, 0, 0, 0, 0, 0, 0, 0, 3, 7
+"d:\project\backend\lms\migrations\0001_initial.py", "Python", 0, 23, 0, 0, 0, 0, 0, 0, 1, 7, 31
+"d:\project\backend\lms\migrations\0002_remove_class_section.py", "Python", 0, 11, 0, 0, 0, 0, 0, 0, 1, 6, 18
+"d:\project\backend\lms\migrations\0003_book.py", "Python", 0, 19, 0, 0, 0, 0, 0, 0, 1, 6, 26
+"d:\project\backend\lms\migrations\0004_book_created_at.py", "Python", 0, 12, 0, 0, 0, 0, 0, 0, 1, 6, 19
+"d:\project\backend\lms\migrations\0005_alter_book_class_name_alter_book_section_and_more.py", "Python", 0, 25, 0, 0, 0, 0, 0, 0, 1, 6, 32
+"d:\project\backend\lms\migrations\0006_bookissue.py", "Python", 0, 19, 0, 0, 0, 0, 0, 0, 1, 6, 26
+"d:\project\backend\lms\migrations\__init__.py", "Python", 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"d:\project\backend\lms\models.py", "Python", 0, 21, 0, 0, 0, 0, 0, 0, 1, 6, 28
+"d:\project\backend\lms\serializer.py", "Python", 0, 33, 0, 0, 0, 0, 0, 0, 0, 11, 44
+"d:\project\backend\lms\urls.py", "Python", 0, 7, 0, 0, 0, 0, 0, 0, 0, 2, 9
+"d:\project\backend\lms\views.py", "Python", 0, 53, 0, 0, 0, 0, 0, 0, 0, 8, 61
+"d:\project\backend\manage.py", "Python", 0, 15, 0, 0, 0, 0, 0, 0, 3, 5, 23
+"d:\project\backend\student\__init__.py", "Python", 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"d:\project\backend\student\admin.py", "Python", 0, 5, 0, 0, 0, 0, 0, 0, 1, 0, 6
+"d:\project\backend\student\apps.py", "Python", 0, 4, 0, 0, 0, 0, 0, 0, 0, 3, 7
+"d:\project\backend\student\migrations\0001_initial.py", "Python", 0, 34, 0, 0, 0, 0, 0, 0, 1, 7, 42
+"d:\project\backend\student\migrations\0002_studentprofile_father_name_and_more.py", "Python", 0, 17, 0, 0, 0, 0, 0, 0, 1, 6, 24
+"d:\project\backend\student\migrations\__init__.py", "Python", 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"d:\project\backend\student\models.py", "Python", 0, 20, 0, 0, 0, 0, 0, 0, 1, 5, 26
+"d:\project\backend\student\serializer.py", "Python", 0, 18, 0, 0, 0, 0, 0, 0, 0, 5, 23
+"d:\project\backend\student\tests.py", "Python", 0, 1, 0, 0, 0, 0, 0, 0, 1, 2, 4
+"d:\project\backend\student\urls.py", "Python", 0, 9, 0, 0, 0, 0, 0, 0, 0, 2, 11
+"d:\project\backend\student\views.py", "Python", 0, 80, 0, 0, 0, 0, 0, 0, 1, 13, 94
+"d:\project\frontend\README.md", "Markdown", 7, 0, 0, 0, 0, 0, 0, 0, 0, 6, 13
+"d:\project\frontend\eslint.config.js", "JavaScript", 0, 0, 32, 0, 0, 0, 0, 0, 0, 2, 34
+"d:\project\frontend\index.html", "Django HTML", 0, 0, 0, 0, 0, 0, 0, 13, 0, 1, 14
+"d:\project\frontend\package-lock.json", "JSON", 0, 0, 0, 0, 0, 0, 3827, 0, 0, 1, 3828
+"d:\project\frontend\package.json", "JSON", 0, 0, 0, 0, 0, 0, 37, 0, 0, 1, 38
+"d:\project\frontend\src\App.jsx", "JavaScript JSX", 0, 0, 0, 0, 129, 0, 0, 0, 1, 9, 139
+"d:\project\frontend\src\api\api.jsx", "JavaScript JSX", 0, 0, 0, 0, 45, 0, 0, 0, 0, 14, 59
+"d:\project\frontend\src\api\libriary.jsx", "JavaScript JSX", 0, 0, 0, 0, 68, 0, 0, 0, 0, 14, 82
+"d:\project\frontend\src\api\student.jsx", "JavaScript JSX", 0, 0, 0, 0, 6, 0, 0, 0, 0, 2, 8
+"d:\project\frontend\src\assets\react.svg", "XML", 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1
+"d:\project\frontend\src\components\SmallComponent\BuyNow.jsx", "JavaScript JSX", 0, 0, 0, 0, 11, 0, 0, 0, 0, 2, 13
+"d:\project\frontend\src\components\SmallComponent\PricingCard.jsx", "JavaScript JSX", 0, 0, 0, 0, 72, 0, 0, 0, 3, 5, 80
+"d:\project\frontend\src\components\UI\Footer.jsx", "JavaScript JSX", 0, 0, 0, 0, 189, 0, 0, 0, 10, 11, 210
+"d:\project\frontend\src\components\UI\Hero.jsx", "JavaScript JSX", 0, 0, 0, 0, 151, 0, 0, 0, 13, 20, 184
+"d:\project\frontend\src\components\UI\Library\Sidebar.jsx", "JavaScript JSX", 0, 0, 0, 0, 341, 0, 0, 0, 11, 32, 384
+"d:\project\frontend\src\components\UI\Navbar.jsx", "JavaScript JSX", 0, 0, 0, 0, 187, 0, 0, 0, 8, 14, 209
+"d:\project\frontend\src\components\UI\OverView.jsx", "JavaScript JSX", 0, 0, 0, 0, 224, 0, 0, 0, 9, 17, 250
+"d:\project\frontend\src\context\Auth.jsx", "JavaScript JSX", 0, 0, 0, 0, 70, 0, 0, 0, 0, 18, 88
+"d:\project\frontend\src\hooks\pageTitle.jsx", "JavaScript JSX", 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 7
+"d:\project\frontend\src\index.css", "PostCSS", 0, 0, 0, 0, 0, 12, 0, 0, 2, 3, 17
+"d:\project\frontend\src\main.jsx", "JavaScript JSX", 0, 0, 0, 0, 9, 0, 0, 0, 0, 2, 11
+"d:\project\frontend\src\pages\Contact.jsx", "JavaScript JSX", 0, 0, 0, 0, 174, 0, 0, 0, 2, 11, 187
+"d:\project\frontend\src\pages\Export.jsx", "JavaScript JSX", 0, 0, 0, 0, 15, 0, 0, 0, 0, 0, 15
+"d:\project\frontend\src\pages\Home.jsx", "JavaScript JSX", 0, 0, 0, 0, 13, 0, 0, 0, 0, 4, 17
+"d:\project\frontend\src\pages\LMS\LABook.jsx", "JavaScript JSX", 0, 0, 0, 0, 306, 0, 0, 0, 14, 43, 363
+"d:\project\frontend\src\pages\LMS\LBookHistory.jsx", "JavaScript JSX", 0, 0, 0, 0, 666, 0, 0, 0, 29, 61, 756
+"d:\project\frontend\src\pages\LMS\LIBook.jsx", "JavaScript JSX", 0, 0, 0, 0, 593, 0, 0, 0, 28, 48, 669
+"d:\project\frontend\src\pages\LMS\LIR.jsx", "JavaScript JSX", 0, 0, 0, 0, 677, 0, 0, 0, 35, 52, 764
+"d:\project\frontend\src\pages\LMS\LMClass.jsx", "JavaScript JSX", 0, 0, 0, 0, 592, 0, 0, 0, 30, 48, 670
+"d:\project\frontend\src\pages\LMS\LPrinciple.jsx", "JavaScript JSX", 0, 0, 0, 0, 480, 0, 0, 0, 21, 29, 530
+"d:\project\frontend\src\pages\LMS\LRBook.jsx", "JavaScript JSX", 0, 0, 0, 0, 7, 0, 0, 0, 0, 2, 9
+"d:\project\frontend\src\pages\LMS\Layout.jsx", "JavaScript JSX", 0, 0, 0, 0, 11, 0, 0, 0, 0, 2, 13
+"d:\project\frontend\src\pages\LMS\Lprofile.jsx", "JavaScript JSX", 0, 0, 0, 0, 609, 0, 0, 0, 29, 35, 673
+"d:\project\frontend\src\pages\Layout.jsx", "JavaScript JSX", 0, 0, 0, 0, 13, 0, 0, 0, 0, 2, 15
+"d:\project\frontend\src\pages\Login.jsx", "JavaScript JSX", 0, 0, 0, 0, 179, 0, 0, 0, 7, 21, 207
+"d:\project\frontend\src\pages\Pricing.jsx", "JavaScript JSX", 0, 0, 0, 0, 130, 0, 0, 0, 0, 7, 137
+"d:\project\frontend\src\routes\AuthRoute.jsx", "JavaScript JSX", 0, 0, 0, 0, 10, 0, 0, 0, 0, 1, 11
+"d:\project\frontend\src\routes\ExportRoute.jsx", "JavaScript JSX", 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 4
+"d:\project\frontend\src\routes\LibrianRoute.jsx", "JavaScript JSX", 0, 0, 0, 0, 10, 0, 0, 0, 0, 3, 13
+"d:\project\frontend\src\routes\PublicRoute.jsx", "JavaScript JSX", 0, 0, 0, 0, 10, 0, 0, 0, 0, 1, 11
+"d:\project\frontend\tailwind.config.js", "JavaScript", 0, 0, 6, 0, 0, 0, 0, 0, 1, 1, 8
+"d:\project\frontend\vite.config.js", "JavaScript", 0, 0, 8, 0, 0, 0, 0, 0, 1, 2, 11
+"d:\project\main.py", "Python", 0, 49, 0, 0, 0, 0, 0, 0, 0, 8, 57
+"Total", "-", 221, 973, 46, 1, 6008, 12, 3864, 13, 342, 921, 12401

@@ -1,3 +1,4 @@
+from encodings import mac_arabic
 from pyexpat import model
 from turtle import mode
 from django.db import models
@@ -22,7 +23,16 @@ class BookIssue(models.Model):
     student = models.ForeignKey(StudentProfile, on_delete=models.CASCADE, related_name='book_issues')
     issue_date = models.DateTimeField(auto_now_add=True)
     return_date = models.DateTimeField(null=True, blank=True)
+    has_returned = models.BooleanField(default=False)
     def __str__(self):
-        return f"Issue of {self.book.name} to {self.student.user.username}"
-
+        return f"{self.id}.Issue of {self.book.name} to {self.student.user.username} "
+    
+class BookReturn(models.Model):
+    fine_amount = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    book_issue = models.ForeignKey(BookIssue, on_delete=models.CASCADE, related_name='returns')
+    return_date = models.DateTimeField(auto_now_add=True)
+    note = models.TextField(blank=True, null=True)
+    condition =models.CharField(max_length=50,null=True,blank=True)
+    def __str__(self):
+        return f"Return of {self.book_issue.book.name} by {self.book_issue.student.user.username}"
     

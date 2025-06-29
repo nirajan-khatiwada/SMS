@@ -64,7 +64,24 @@ const bookIssue = async (data) => {
   return resp.data;
 };
 
+const bookReturn = async (data) => {
+  const resp = await axiosInstance.post("/lms/book-return/", data);
+  return resp.data;
+};
+
+const getBookIssue = async () => {
+  const resp = await axiosInstance.get("/lms/book-issues/");
+  return resp.data;
+};
+
+const getBookReturn = async () => {
+  const resp = await axiosInstance.get("/lms/book-return/");
+  return resp.data;
+}
+
 export {
+  getBookReturn,
+  getBookIssue,
   getClasses,
   createClass,
   deleteClass,
@@ -77,5 +94,6 @@ export {
   updateBook,
   deleteBook,
     getAllBooks,
-    bookIssue
+    bookIssue,
+    bookReturn
 };
