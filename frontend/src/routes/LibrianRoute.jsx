@@ -5,7 +5,7 @@ import { useContext } from "react"
 const LibrianRoute = () => {
 const  {user} = useContext(AuthContext);
   return (
-    user.role==="librarian"?<Outlet />:<Navigate to={`/${user.role}`} replace={true} />
+    user.role==="librarian"?<Outlet />:<Navigate to={`/${user.role}/dashboard/`} replace={true} />
   )
 
 }

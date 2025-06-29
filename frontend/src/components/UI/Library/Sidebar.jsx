@@ -35,7 +35,7 @@ const sidebarMenuItems = [
   {
     id: 'dashboard',
     name: 'Dashboard',
-    path: '/librarian/',
+    path: '/librarian/dashboard/',
     icon: <BarChart3 />,
     description: 'Overview of library statistics'
   },

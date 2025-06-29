@@ -4,7 +4,7 @@ import { useContext } from "react"
 const PublicRoute = () => {
     const {isAuthenticated,user} = useContext(AuthContext);
   return (
-    isAuthenticated?<Navigate to={`/${user.role}`} replace={true} />:<Outlet />
+    isAuthenticated?<Navigate to={`/${user.role}/dashboard/`} replace={true} />:<Outlet />
   )
 }
 

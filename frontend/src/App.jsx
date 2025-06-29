@@ -67,7 +67,7 @@ const router = createBrowserRouter([
                 element: <LLayout />,
                 children: [
                   {
-                    index: true,
+                    path: "dashboard",
                     element:<LDashboard/>,
                   },
                   {
