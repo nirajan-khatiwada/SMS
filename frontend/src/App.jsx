@@ -3,13 +3,13 @@ import {QueryClient,QueryClientProvider} from "@tanstack/react-query"
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 import {
-  Lprofile,
+  Profile,
   Home,
   Layout,
   Pricing,
   Contact,
   Login,
-  LLayout,  LPrinciple,
+  LLayout,  Principle,
   LMClass,
   LABook,
   LBookHistory,
@@ -74,11 +74,11 @@ const router = createBrowserRouter([
                   },
                   {
                     path: "profile",
-                    element: <Lprofile />,
+                    element: <Profile />,
                   },
                   {
                     path: "principal",
-                    element: <LPrinciple />,
+                    element: <Principle />,
                   },
                   {
                     path: "manage-class",
@@ -118,6 +118,14 @@ const router = createBrowserRouter([
                 children: [{
                   path: "dashboard",
                   element: <h1>Welcome Back</h1>,
+                },
+                {
+                  path: "profile",
+                  element: <Profile />,
+                },
+                {
+                  path: "principal",
+                  element: <Principle />,
                 }
                 ]
               }

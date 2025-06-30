@@ -260,22 +260,55 @@ const DetailModal = ({ transaction, isOpen, onClose }) => {
   );
 };
 
-const HistoryCard = ({ transaction, onViewDetails }) => {
+const HistoryCard = ({ transaction, onViewDetails, searchType, searchTerm }) => {
   const hasFine = transaction.fine > 0;
+
+  // Helper function to highlight search term
+  const highlightText = (text, shouldHighlight) => {
+    if (!shouldHighlight || !searchTerm || !text) return text;
+    
+    const regex = new RegExp(`(${searchTerm})`, 'gi');
+    const parts = text.toString().split(regex);
+    
+    return parts.map((part, index) => 
+      regex.test(part) ? (
+        <span key={index} className="bg-yellow-200 px-1 rounded">
+          {part}
+        </span>
+      ) : part
+    );
+  };
 
   return (
     <div className="bg-white/70 rounded-xl p-6 shadow-sm border border-gray-100/50 hover:bg-white/90 transition-all duration-300 hover:shadow-md">
       <div className="flex items-start justify-between mb-4">
         <div className="flex-1">
           <h3 className="text-lg font-bold text-gray-900 mb-1">
-            {transaction.bookTitle}
+            {searchType === "book_title" ? 
+              highlightText(transaction.bookTitle, true) : 
+              transaction.bookTitle
+            }
           </h3>
           <p className="text-gray-600 flex items-center space-x-1 mb-1">
             <User size={14} />
-            <span>{transaction.studentName} {transaction.class} (ID: {transaction.studentId})</span>
+            <span>
+              {searchType === "student_name" ? 
+                highlightText(transaction.studentName, true) : 
+                transaction.studentName
+              } {transaction.class} (ID: {
+                searchType === "student_id" ? 
+                  <span className="font-semibold text-blue-600">
+                    {highlightText(transaction.studentId, true)}
+                  </span> : 
+                  transaction.studentId
+              })
+            </span>
           </p>
           <p className="text-sm text-gray-500">
-            Author: {transaction.author}
+            Author: {searchType === "author" ? 
+              highlightText(transaction.author, true) : 
+              transaction.author
+            }
           </p>
         </div>
         <StatusTag status="returned" />
@@ -334,13 +367,14 @@ const HistoryCard = ({ transaction, onViewDetails }) => {
 };
 
 const LIR = () => {
-  const { data: apiData, isLoading, error } = useQuery({
+  const { data: apiData, isLoading, error,refetch } = useQuery({
     queryKey: ['bookReturn'],
     queryFn: getBookReturn,
   });
 
   const [transactions, setTransactions] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [searchType, setSearchType] = useState("all");
   const [filterStatus, setFilterStatus] = useState("all");
   const [sortBy, setSortBy] = useState("issueDate");
   const [sortOrder, setSortOrder] = useState("desc");
@@ -381,14 +415,59 @@ const LIR = () => {
     }
   };
 
+  const getSearchPlaceholder = () => {
+    switch (searchType) {
+      case "student_id":
+        return "Search by Student ID...";
+      case "student_name":
+        return "Search by Student Name...";
+      case "book_title":
+        return "Search by Book Title...";
+      case "author":
+        return "Search by Author...";
+      case "transaction_id":
+        return "Search by Transaction ID...";
+      default:
+        return "Search by book, student, author, or transaction...";
+    }
+  };
+
   const filteredAndSortedTransactions = transactions
     .filter((transaction) => {
-      const matchesSearch = 
-        (transaction.bookTitle && transaction.bookTitle.toLowerCase().includes(searchTerm.toLowerCase())) ||
-        (transaction.studentName && transaction.studentName.toLowerCase().includes(searchTerm.toLowerCase())) ||
-        (transaction.studentId && transaction.studentId.toString().toLowerCase().includes(searchTerm.toLowerCase())) ||
-        (transaction.transactionId && transaction.transactionId.toLowerCase().includes(searchTerm.toLowerCase())) ||
-        (transaction.author && transaction.author.toLowerCase().includes(searchTerm.toLowerCase()));
+      let matchesSearch = true;
+      
+      if (searchTerm.trim()) {
+        switch (searchType) {
+          case "student_id":
+            matchesSearch = transaction.studentId && 
+              transaction.studentId.toString().toLowerCase().includes(searchTerm.toLowerCase());
+            break;
+          case "student_name":
+            matchesSearch = transaction.studentName && 
+              transaction.studentName.toLowerCase().includes(searchTerm.toLowerCase());
+            break;
+          case "book_title":
+            matchesSearch = transaction.bookTitle && 
+              transaction.bookTitle.toLowerCase().includes(searchTerm.toLowerCase());
+            break;
+          case "author":
+            matchesSearch = transaction.author && 
+              transaction.author.toLowerCase().includes(searchTerm.toLowerCase());
+            break;
+          case "transaction_id":
+            matchesSearch = transaction.transactionId && 
+              transaction.transactionId.toLowerCase().includes(searchTerm.toLowerCase());
+            break;
+          default: // "all"
+            matchesSearch = 
+              (transaction.bookTitle && transaction.bookTitle.toLowerCase().includes(searchTerm.toLowerCase())) ||
+              (transaction.studentName && transaction.studentName.toLowerCase().includes(searchTerm.toLowerCase())) ||
+              (transaction.studentId && transaction.studentId.toString().toLowerCase().includes(searchTerm.toLowerCase())) ||
+              (transaction.transactionId && transaction.transactionId.toLowerCase().includes(searchTerm.toLowerCase())) ||
+              (transaction.author && transaction.author.toLowerCase().includes(searchTerm.toLowerCase()));
+            break;
+        }
+      }
       
       const matchesFilter = filterStatus === "all" || 
         (filterStatus === "with_fine" && transaction.fine > 0) ||
@@ -431,15 +510,33 @@ const LIR = () => {
 
           {/* Search and Filter Bar */}
           <div className="flex flex-col lg:flex-row gap-4 mb-6">
-            <div className="flex-1 relative">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
-              <input
-                type="text"
-                placeholder="Search by book, student, author, or transaction..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 bg-white/70 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-300"
-              />
+            <div className="flex-1 flex gap-2">
+              <select
+                value={searchType}
+                onChange={(e) => {
+                  setSearchType(e.target.value);
+                  setSearchTerm(""); // Clear search term when changing type
+                }}
+                className="px-3 py-3 bg-white/70 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-300 min-w-[140px]"
+              >
+                <option value="all">All Fields</option>
+                <option value="student_id">Student ID</option>
+                <option value="student_name">Student Name</option>
+                <option value="book_title">Book Title</option>
+                <option value="author">Author</option>
+                <option value="transaction_id">Transaction ID</option>
+              </select>
+              
+              <div className="flex-1 relative">
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+                <input
+                  type="text"
+                  placeholder={getSearchPlaceholder()}
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full pl-12 pr-4 py-3 bg-white/70 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-300"
+                />
+              </div>
             </div>
             
             <div className="flex items-center space-x-4">
@@ -473,7 +570,7 @@ const LIR = () => {
               </select>
               
               <button
-                onClick={() => window.location.reload()}
+                onClick={() => refetch()}
                 className="p-3 bg-white/70 border border-gray-200 rounded-xl hover:bg-gray-50/80 transition-all duration-300"
               >
                 <RefreshCw size={20} />
@@ -506,6 +603,48 @@ const LIR = () => {
               </p>
             </div>
           </div>
+
+          {/* Quick Search Shortcuts */}
+          {searchType !== "student_id" && (
+            <div className="mb-4">
+              <div className="flex items-center space-x-2 text-sm text-gray-600 mb-2">
+                <Hash size={16} />
+                <span>Quick search by:</span>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                <button
+                  onClick={() => {
+                    setSearchType("student_id");
+                    setSearchTerm("");
+                  }}
+                  className="px-3 py-1.5 bg-blue-100/60 text-blue-700 rounded-lg hover:bg-blue-200/60 transition-all duration-300 text-sm flex items-center space-x-1"
+                >
+                  <Hash size={14} />
+                  <span>Student ID</span>
+                </button>
+                <button
+                  onClick={() => {
+                    setSearchType("student_name");
+                    setSearchTerm("");
+                  }}
+                  className="px-3 py-1.5 bg-green-100/60 text-green-700 rounded-lg hover:bg-green-200/60 transition-all duration-300 text-sm flex items-center space-x-1"
+                >
+                  <User size={14} />
+                  <span>Student Name</span>
+                </button>
+                <button
+                  onClick={() => {
+                    setSearchType("book_title");
+                    setSearchTerm("");
+                  }}
+                  className="px-3 py-1.5 bg-purple-100/60 text-purple-700 rounded-lg hover:bg-purple-200/60 transition-all duration-300 text-sm flex items-center space-x-1"
+                >
+                  <BookOpen size={14} />
+                  <span>Book Title</span>
+                </button>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Content */}
@@ -518,7 +657,24 @@ const LIR = () => {
             <p className="text-gray-600">Please try again later</p>
           </div>
         ) : (
-          <div className="space-y-4">
+          <>
+            {/* Search Results Info */}
+            {searchTerm && (
+              <div className="mb-4 p-3 bg-blue-50/60 border border-blue-200/50 rounded-lg">
+                <p className="text-sm text-blue-800">
+                  {searchType === "all" ? (
+                    <>Searching all fields for: <span className="font-semibold">"{searchTerm}"</span></>
+                  ) : (
+                    <>Searching by {searchType.replace('_', ' ')}: <span className="font-semibold">"{searchTerm}"</span></>
+                  )}
+                  {filteredAndSortedTransactions.length > 0 && (
+                    <span className="ml-2">({filteredAndSortedTransactions.length} results found)</span>
+                  )}
+                </p>
+              </div>
+            )}
+            
+            <div className="space-y-4">
             {filteredAndSortedTransactions.length === 0 ? (
               <div className="text-center py-12">
                 <Clock className="w-16 h-16 text-gray-300 mx-auto mb-4" />
@@ -530,6 +686,8 @@ const LIR = () => {
                 <HistoryCard
                   key={transaction.id}
                   transaction={transaction}
+                  searchType={searchType}
+                  searchTerm={searchTerm}
                   onViewDetails={(transaction) => {
                     setSelectedTransaction(transaction);
                     setShowDetailModal(true);
@@ -537,7 +695,8 @@ const LIR = () => {
                 />
               ))
             )}
-          </div>
+            </div>
+          </>
         )}
       </div>
 

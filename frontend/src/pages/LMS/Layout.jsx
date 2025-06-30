@@ -1,4 +1,4 @@
-import Sidebar from '../../components/UI/Library/Sidebar'
+import Sidebar from '../../components/UI/Sidebar/Library'
 import { Outlet } from 'react-router-dom'
 
 const LLayout = () => {

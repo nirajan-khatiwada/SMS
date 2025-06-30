@@ -292,7 +292,7 @@ const BookCard = ({ book, onReturn }) => {
           <div className="flex items-center space-x-4 text-sm text-gray-600">
             <div className="flex items-center space-x-1">
               <Hash size={14} />
-              <span>{book.book?.name || 'Unknown'}</span>
+              <span>{book.book?.author || 'Unknown'}</span>
             </div>
             <div className="flex items-center space-x-1">
               <Users size={14} />
@@ -313,7 +313,7 @@ const BookCard = ({ book, onReturn }) => {
 };
 
 const LRBook = () => {
-  const {data:bookIssue ,loading}=useQuery({
+  const {data:bookIssue ,loading,refetch}=useQuery({
     queryKey: ['book-issue'],
     queryFn: getBookIssue,
   })
@@ -420,7 +420,7 @@ const LRBook = () => {
               </select>
               
               <button
-                onClick={() => window.location.reload()}
+                onClick={() => refetch()}
                 className="p-3 bg-white/70 border border-gray-200 rounded-xl hover:bg-gray-50/80 transition-all duration-300"
               >
                 <RefreshCw size={20} />

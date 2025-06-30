@@ -1,5 +1,6 @@
-import Sidebar from "../../components/UI/Library/Sidebar"
+import Sidebar from "../../components/UI/Sidebar/Nurse"
 import { Outlet } from "react-router-dom"
+
 const NLayout = () => {
   return (
         <div className="flex h-screen">
