@@ -1,4 +1,5 @@
 import AuthRoute from "./AuthRoute";
 import LibrianRoute from "./LibrianRoute";
 import PublicRoute from "./PublicRoute";
-export { AuthRoute, LibrianRoute, PublicRoute };
+import NurseRoute from "./NurseRoute";
+export { AuthRoute, LibrianRoute, PublicRoute,NurseRoute };

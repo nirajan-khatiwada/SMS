@@ -36,6 +36,7 @@ class LoginSerializer(serializers.Serializer):
         user = authenticate(request=request, username=username, password=password)
      
         if user is not None:
+            print(f"Authenticated user: {user.username} with role: {user.role}")
             if user.role != role:
                 raise UnauthorizedException("Role mismatch")
             return user

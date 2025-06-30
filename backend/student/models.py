@@ -19,7 +19,7 @@ class StudentProfile(models.Model):
     user = models.OneToOneField(USER, on_delete=models.CASCADE, related_name='student_profile')
     class_name = models.ForeignKey(Class, on_delete=models.CASCADE, related_name='students')
     section = models.ForeignKey(Section, on_delete=models.CASCADE, related_name='students')
-    roll_number = models.CharField(max_length=20, unique=True)
+    roll_number = models.CharField(max_length=20)
     father_name = models.CharField(max_length=100,blank=True, null=True)
     mother_name = models.CharField(max_length=100,null=True, blank=True)
     def __str__(self):

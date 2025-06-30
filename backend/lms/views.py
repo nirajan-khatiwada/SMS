@@ -5,9 +5,14 @@ from .serializer import bookSerializer,BookIssueSerializer, BookReturnSerializer
 from .models import Book,BookIssue,BookReturn
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework.permissions import BasePermission
+
+class IsLibrarian(BasePermission):
+    def has_permission(self, request, view):
+        return request.user.role == "librarian" 
 
 class BookView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated,IsLibrarian]
     authentication_classes = [JWTAuthentication]
     
     def get(self, request):
@@ -44,7 +49,7 @@ class BookView(APIView):
         
 
 class BookIssueView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated,IsLibrarian]
     authentication_classes = [JWTAuthentication]
 
     def get(self, request):
@@ -61,7 +66,7 @@ class BookIssueView(APIView):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
 class BookReturnView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated,IsLibrarian]
     authentication_classes = [JWTAuthentication]
     def post(self, request):
         serializer = BookReturnSerializer(data=request.data)

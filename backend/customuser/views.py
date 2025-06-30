@@ -24,8 +24,8 @@ class CustomUserView(APIView):
     
 class ChangePasswordView(APIView):
     authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAuthenticated]
-    
+    permission_classes = []
+    IsAuthenticated
     def post(self, request):
         user = request.user
         serializer = PasswordSerializer(user, data=request.data)

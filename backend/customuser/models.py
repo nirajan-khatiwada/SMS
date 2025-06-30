@@ -5,7 +5,6 @@ from django.contrib.auth.models import AbstractBaseUser,PermissionsMixin,BaseUse
 
 ROLES = (
     ("principal", "Principal"),
-    ("hod", "HOD"),
     ("teacher", "Teacher"),
     ("student", "Student"),
     ("librarian", "Librarian"),
@@ -13,7 +12,6 @@ ROLES = (
     ("nurse", "Nurse"),  # Instead of "hospital"
     ("doctor", "Doctor"),
     ("health_staff", "Health Staff"),
-    ("parent", "Parent"),  # Optional but useful for student mgmt
 )
 
 

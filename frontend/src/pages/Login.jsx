@@ -21,7 +21,7 @@ const Login = () => {
     { value: 'teacher', label: 'Teacher Portal', icon: '👨‍🏫' },
     { value: 'student', label: 'Student Portal', icon: '🎓' },
     { value: 'principal', label: 'Principal Portal', icon: '🏛️' },
-    { value: 'hospital', label: 'Hospital Management', icon: '🏥' },
+    { value: 'nurse', label: 'Nurse Management', icon: '🏥' },
     { value: 'attendance', label: 'Attendance System', icon: '📋' }
   ];
 

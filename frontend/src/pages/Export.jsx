@@ -13,4 +13,5 @@ import LIBook from "./LMS/LIBook";
 import LRBook from "./LMS/LRBook";
 import LIR from "./LMS/LIR";
 import LDashboard from "./LMS/LDashboard";
-export {Home, Layout, Pricing,Login,Contact,LLayout,Lprofile,LMClass,LPrinciple,LABook,LBookHistory,LIBook,LRBook,LIR,LDashboard};
+import NLayout from "./NMS/NLayout";
+export {Home, Layout, Pricing,Login,Contact,LLayout,Lprofile,LMClass,LPrinciple,LABook,LBookHistory,LIBook,LRBook,LIR,LDashboard,NLayout};

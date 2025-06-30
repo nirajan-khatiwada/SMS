@@ -16,12 +16,14 @@ import {
   LIBook,
   LRBook,
   LIR,
-  LDashboard
+  LDashboard,
+  NLayout
+  
 } from "./pages/Export.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthProvider } from "./context/Auth.jsx";
-import { AuthRoute, LibrianRoute, PublicRoute } from "./routes/ExportRoute";
+import { AuthRoute, LibrianRoute, PublicRoute,NurseRoute } from "./routes/ExportRoute";
 const router = createBrowserRouter([
   {
     element: <AuthProvider />,
@@ -107,6 +109,20 @@ const router = createBrowserRouter([
               },
             ],
           },
+          {
+            path: "/nurse",
+            element: <NurseRoute />,
+            children: [
+              {
+                element: <NLayout />,
+                children: [{
+                  path: "dashboard",
+                  element: <h1>Welcome Back</h1>,
+                }
+                ]
+              }
+            ]
+          }
         ],
       },
     ],
