@@ -9,6 +9,6 @@ class NotificationView(APIView):
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated]
     def get(self,request):
-        notifications = Notification.objects.filter(recipients=request.user,sender__role='principal')
+        notifications = Notification.objects.filter(recipients=request.user,sender__role='principal').order_by("-id")
         serializer = NotificationSerializer(notifications, many=True)
         return Response(serializer.data, status=200)

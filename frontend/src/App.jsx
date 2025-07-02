@@ -22,7 +22,8 @@ import {
   TotalProduct,
   NAllRecord,
   NAddRecord,
-  TLayout
+  TLayout,
+  NDash
   
 } from "./pages/Export.jsx";
 import { ToastContainer } from "react-toastify";
@@ -122,7 +123,7 @@ const router = createBrowserRouter([
                 element: <NLayout />,
                 children: [{
                   path: "dashboard",
-                  element: <h1>Welcome Back</h1>,
+                  element: <NDash/>
                 },
                 {
                   path: "profile",
@@ -169,7 +170,8 @@ const router = createBrowserRouter([
               {
                 path:"principal",
                 element:<Principle/>
-              }
+              },
+             
             ]}
 
             ]

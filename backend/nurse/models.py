@@ -37,3 +37,4 @@ class Record(models.Model):
 
     def __str__(self):
         return f"{self.student} - {self.visit_reason} - {self.date.date()}"
+    

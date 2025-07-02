@@ -15,7 +15,7 @@ class ClassView(APIView):
     permission_classes = [IsAuthenticated]
     authentication_classes = [JWTAuthentication]
     def get(self,request):
-        classes = Class.objects.all()
+        classes = Class.objects.all().order_by("-id")
         serializer = classSerializer(classes, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
     def post(self,request):
@@ -51,7 +51,7 @@ class SectionView(APIView):
     authentication_classes = [JWTAuthentication]
     
     def get(self, request):
-        sections = Section.objects.all()
+        sections = Section.objects.all().order_by("-id")
         serializer = sectionSerializer(sections, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
     

@@ -63,8 +63,8 @@ const sidebarMenuItems = [
     ]
   },
   {
-    id: 'product',
-    name: 'Product',
+    id: 'attandance',
+    name: 'Attandance',
     icon: <RefreshCw />,
     hasSubmenu: true,
     submenu: [
@@ -118,7 +118,7 @@ const sidebarMenuItems = [
 
 const Sidebar = ({ isAdmin = true, className = '' }) => {
 
-  useTitle('Library Management System');
+  useTitle('Teacher Management System');
   
 
   const {data, isPending,error,isError } = useQuery({

@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
+import { useNavigate } from 'react-router-dom';
 import { 
   BookOpen, 
   Users, 
@@ -167,7 +168,7 @@ const LoadingSkeleton = () => (
 
 const LDashboard = () => {
   const [timeFilter, setTimeFilter] = useState('7d');
-  
+  const navigate = useNavigate();
   // Fetch all data
   const { data: books = [], isLoading: booksLoading } = useQuery({
     queryKey: ['books'],
@@ -370,7 +371,7 @@ const LDashboard = () => {
                 <span className="hidden sm:inline">Recent Book Issues</span>
                 <span className="sm:hidden">Recent Issues</span>
               </h3>
-              <button className="text-blue-600 hover:text-blue-700 text-xs sm:text-sm font-medium">
+              <button className="text-blue-600 hover:text-blue-700 text-xs sm:text-sm font-medium" onClick={() => navigate('/librarian/return/')}>
                 View All
               </button>
             </div>
@@ -409,7 +410,7 @@ const LDashboard = () => {
                 <span className="hidden sm:inline">Recent Returns</span>
                 <span className="sm:hidden">Returns</span>
               </h3>
-              <button className="text-blue-600 hover:text-blue-700 text-xs sm:text-sm font-medium">
+              <button className="text-blue-600 hover:text-blue-700 text-xs sm:text-sm font-medium" onClick={() => navigate('/librarian/return/')}>
                 View All
               </button>
             </div>
