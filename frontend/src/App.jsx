@@ -17,13 +17,18 @@ import {
   LRBook,
   LIR,
   LDashboard,
-  NLayout
+  NLayout,
+  AddProduct,
+  TotalProduct,
+  NAllRecord,
+  NAddRecord,
+  TLayout
   
 } from "./pages/Export.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthProvider } from "./context/Auth.jsx";
-import { AuthRoute, LibrianRoute, PublicRoute,NurseRoute } from "./routes/ExportRoute";
+import { AuthRoute, LibrianRoute, PublicRoute,NurseRoute,TeacherRoute } from "./routes/ExportRoute";
 const router = createBrowserRouter([
   {
     element: <AuthProvider />,
@@ -126,9 +131,47 @@ const router = createBrowserRouter([
                 {
                   path: "principal",
                   element: <Principle />,
+                },
+                {
+                  path: "add-product",
+                  element: <AddProduct />,
+                },
+                {
+                  path: "total-product",
+                  element: <TotalProduct />,
+                },
+                {
+                  path: "all-record",
+                  element: <NAllRecord />,
+                },
+                {
+                  path: "add-record",
+                  element: <NAddRecord />,
                 }
                 ]
               }
+            ]
+          },
+          {
+            path:"/teacher",
+            element:<TeacherRoute/>,
+            children:[
+              {element:<TLayout/>,
+              children:[
+              {
+              path:"dashboard",
+              element:<h1>This is my dashboard</h1>
+              },
+              {
+                path:"profile",
+                element:<Profile/>
+              },
+              {
+                path:"principal",
+                element:<Principle/>
+              }
+            ]}
+
             ]
           }
         ],

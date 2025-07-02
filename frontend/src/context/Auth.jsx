@@ -40,6 +40,7 @@ export const AuthProvider = ()=>{
         localStorage.setItem("access_token", access);
         localStorage.setItem("refresh_token", refresh);
         setUser(jwtDecode(refresh));
+        console.log(jwtDecode(refresh).role)
         navigate(`/${jwtDecode(refresh).role}`);
         
     }

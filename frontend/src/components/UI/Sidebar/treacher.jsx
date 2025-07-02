@@ -88,7 +88,7 @@ const sidebarMenuItems = [
   {
     id: 'announcements',
     name: 'Principal Announcements',
-    path: '/nurse/principal/',
+    path: '/teacher/principal/',
     icon: <Megaphone />,
     description: 'View principal notices and announcements'
   },  
@@ -101,7 +101,7 @@ const sidebarMenuItems = [
       {
         id: 'profile',
         name: 'My Profile',
-        path: '/nurse/profile',
+        path: '/teacher/profile',
         icon: <User />,
         description: 'Manage your profile'
       },
@@ -247,8 +247,8 @@ const {user,Logout} = useContext(AuthContext);
                 <Library className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h2 className="text-lg font-bold text-gray-900">NMS Portal</h2>
-                <p className="text-sm text-gray-500">Nurse Management</p>
+                <h2 className="text-lg font-bold text-gray-900">TMS Portal</h2>
+                <p className="text-sm text-gray-500">Teacher Management</p>
               </div>
             </div>
           </div>
