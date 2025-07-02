@@ -23,7 +23,8 @@ import {
   NAllRecord,
   NAddRecord,
   TLayout,
-  NDash
+  NDash,
+  Attandance
   
 } from "./pages/Export.jsx";
 import { ToastContainer } from "react-toastify";
@@ -171,6 +172,11 @@ const router = createBrowserRouter([
                 path:"principal",
                 element:<Principle/>
               },
+              {
+                path:"add-attandance",
+                element:<Attandance/>
+              }
+              
              
             ]}
 

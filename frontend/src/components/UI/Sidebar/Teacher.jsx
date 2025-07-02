@@ -69,9 +69,9 @@ const sidebarMenuItems = [
     hasSubmenu: true,
     submenu: [
       {
-        id: 'add-product',
-        name: 'Add Product',
-        path: '/nurse/add-product/',
+        id: 'add-attandance',
+        name: 'Perform Attandance',
+        path: '/teacher/add-attandance/',
         icon: <Send />,
         description: 'Add products to system'
       },
