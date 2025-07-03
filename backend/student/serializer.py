@@ -1,4 +1,3 @@
-import re
 from .models import Class, Section, StudentProfile
 from rest_framework.serializers import ModelSerializer
 from customuser.serializer import CustomUserSerializer

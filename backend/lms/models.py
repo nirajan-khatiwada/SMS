@@ -1,10 +1,21 @@
 
 from django.db import models
-from student.models import Class, Section
+
 from student.models import StudentProfile
 # Create your models here.
 
 
+
+
+class Section(models.Model):
+    name = models.CharField(max_length=100)
+    def __str__(self):
+        return self.name 
+
+class Class(models.Model):
+    name = models.CharField(max_length=100)
+    def __str__(self):
+        return f"{self.name}"
     
 class Book(models.Model):
     name = models.CharField(max_length=100)

@@ -1,8 +1,8 @@
 from os import write
 from rest_framework.serializers import ModelSerializer
 from rest_framework import serializers
-from .models import  Book,BookIssue,BookReturn
-from student.models import StudentProfile
+from .models import  Book,BookIssue,BookReturn,Class,Section
+
         
 class bookSerializer(ModelSerializer):
     sections = serializers.SerializerMethodField()
@@ -105,3 +105,15 @@ class GetBookReturnSerializer(ModelSerializer):
     class Meta:
         model = BookReturn
         fields = ["id", "book_issue", "return_date", "note", "condition", "fine_amount"]
+
+
+class classSerializer(ModelSerializer):
+    class Meta:
+        model = Class
+        fields = ["id","name"]
+
+
+class sectionSerializer(ModelSerializer):
+    class Meta:
+        model = Section
+        fields = ["id","name"]
