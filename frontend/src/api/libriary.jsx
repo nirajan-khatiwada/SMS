@@ -1,41 +1,41 @@
 import axiosInstance from "./api";
 
 const getClasses = async () => {
-  const resp = await axiosInstance.get("/student/classes/");
+  const resp = await axiosInstance.get("/lms/classes/");
   return resp.data;
 };
 
 const createClass = async (data) => {
-  const resp = await axiosInstance.post("/student/classes/", data);
+  const resp = await axiosInstance.post("/lms/classes/", data);
   return resp.data;
 };
 
 const deleteClass = async (id) => {
-  const resp = await axiosInstance.delete(`/student/classes/${id}/`);
+  const resp = await axiosInstance.delete(`/lms/classes/${id}/`);
   return resp.data;
 };
 
 const updateClass = async (id, data) => {
-  const resp = await axiosInstance.put(`/student/classes/${id}/`, data);
+  const resp = await axiosInstance.put(`/lms/classes/${id}/`, data);
   return resp.data;
 };
 
 const getSections = async () => {
-  const resp = await axiosInstance.get("/student/sections/");
+  const resp = await axiosInstance.get("/lms/sections/");
   return resp.data;
 };
 
 const createSection = async (data) => {
-  const resp = await axiosInstance.post("/student/sections/", data);
+  const resp = await axiosInstance.post("/lms/sections/", data);
   return resp.data;
 };
 
 const deleteSection = async (id) => {
-  const resp = await axiosInstance.delete(`/student/sections/${id}/`);
+  const resp = await axiosInstance.delete(`/lms/sections/${id}/`);
   return resp.data;
 };
 const updateSection = async (id, data) => {
-  const resp = await axiosInstance.put(`/student/sections/${id}/`, data);
+  const resp = await axiosInstance.put(`/lms/sections/${id}/`, data);
   return resp.data;
 };
 
