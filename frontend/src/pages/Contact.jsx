@@ -18,7 +18,7 @@ const Contact = () => {
   const onSubmit = async (data) => {
    try{
     const res =await contactForm(data);
-    
+    toast.success('Message sent successfully!');
     reset();
    }catch(err){
     const status = err.response?.status;
