@@ -305,7 +305,7 @@ const QuickActions = () => {
       description: 'Browse all medical records',
       icon: FileText,
       color: 'green',
-      action: () => navigate('/nurse/all-records')
+      action: () => navigate('/nurse/all-record')
     },
     {
       title: 'Manage Inventory',

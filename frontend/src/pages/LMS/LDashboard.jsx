@@ -27,9 +27,8 @@ import {
   getAllBooks, 
   getBookIssue, 
   getBookReturn, 
-  getClasses, 
-  getSections 
 } from '../../api/libriary';
+import { getAllStudentClasses,getAllStudentSections } from '../../api/student';
 import { getStudentProfile } from '../../api/student';
 import { fetchNotifications } from '../../api/api';
 
@@ -195,14 +194,14 @@ const LDashboard = () => {
   });
 
   const { data: classes = [], isLoading: classesLoading } = useQuery({
-    queryKey: ['classes'],
-    queryFn: getClasses,
+    queryKey: ['student-classes'],
+    queryFn: getAllStudentClasses,
     staleTime: 5 * 60 * 1000,
   });
 
   const { data: sections = [], isLoading: sectionsLoading } = useQuery({
-    queryKey: ['sections'],
-    queryFn: getSections,
+    queryKey: ['student-sections'],
+    queryFn: getAllStudentSections,
     staleTime: 5 * 60 * 1000,
   });
 
