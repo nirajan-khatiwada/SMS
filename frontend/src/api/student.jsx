@@ -5,4 +5,9 @@ const getStudentProfile = async () => {
   return resp.data;
 }
 
-export { getStudentProfile };
+const getStudentPhoneNumber = async () => {
+  const resp = await axiosInstance.get(`/student/student-phone-number/`);
+  return resp.data;
+}
+
+export { getStudentProfile,getStudentPhoneNumber };

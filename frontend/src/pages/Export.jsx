@@ -21,4 +21,5 @@ import NAddRecord from "./NMS/NAddRecord";
 import TLayout from "./TMS/TLayout";
 import NDash from "./NMS/NDash";
 import Attandance from "./TMS/Attandance";
-export {Home, Layout, Pricing,Login,Contact,LLayout,LMClass,Principle,LABook,LBookHistory,LIBook,LRBook,LIR,LDashboard,NLayout,Profile,AddProduct,TotalProduct,NAllRecord,NAddRecord,TLayout,NDash,Attandance};
+import PhoneNunberFinder from "../components/UI/Shared/PhoneNunberFinder";
+export {Home, Layout, Pricing,Login,Contact,LLayout,LMClass,Principle,LABook,LBookHistory,LIBook,LRBook,LIR,LDashboard,NLayout,Profile,AddProduct,TotalProduct,NAllRecord,NAddRecord,TLayout,NDash,Attandance,PhoneNunberFinder};

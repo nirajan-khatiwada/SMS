@@ -19,6 +19,7 @@ import {
   Mail,
   User,
   LogOut,
+  Phone,
   Settings,
   FileText,
   Cog,
@@ -98,7 +99,17 @@ const sidebarMenuItems = [
       },
       
     ]
-  },
+  
+  }
+
+  , {
+    id: 'phone-number-finder',
+    name: 'Phone Number Finder',
+    path: '/librarian/phone-number-finder/',
+    icon: <Phone />,
+    description: 'View student phone numbers',
+  }
+  ,
   {
     id: 'announcements',
     name: 'Principal Announcements',

@@ -25,6 +25,7 @@ import {
   ChevronDown,
   ChevronRight,
   Menu,
+  Phone,
   X,
   Library,
   UserCheck,
@@ -61,7 +62,17 @@ const sidebarMenuItems = [
       },
     
     ]
-  },
+  }
+  ,  
+  {
+    id: 'phone-number-finder',
+    name: 'Phone Number Finder',
+    path: '/teacher/phone-number-finder/',
+    icon: <Phone/>,
+    description: 'View student phone numbers',
+  }
+  ,
+  
   {
     id: 'attandance',
     name: 'Attandance',
@@ -91,7 +102,8 @@ const sidebarMenuItems = [
     path: '/teacher/principal/',
     icon: <Megaphone />,
     description: 'View principal notices and announcements'
-  },  
+  }
+  ,
   {
     id: 'account',
     name: 'Account',

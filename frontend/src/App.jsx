@@ -24,7 +24,8 @@ import {
   NAddRecord,
   TLayout,
   NDash,
-  Attandance
+  Attandance,
+  PhoneNunberFinder
   
 } from "./pages/Export.jsx";
 import { ToastContainer } from "react-toastify";
@@ -111,6 +112,10 @@ const router = createBrowserRouter([
                     path: "history",
                     element: <LIR />,
 
+                  },
+                  {
+                    path: "phone-number-finder",
+                    element: <PhoneNunberFinder />
                   }
                 ]
               },
@@ -149,6 +154,10 @@ const router = createBrowserRouter([
                 {
                   path: "add-record",
                   element: <NAddRecord />,
+                },
+                {
+                  path:"phone-number-finder",
+                  element:<PhoneNunberFinder/>
                 }
                 ]
               }
@@ -175,6 +184,10 @@ const router = createBrowserRouter([
               {
                 path:"add-attandance",
                 element:<Attandance/>
+              },
+              {
+                path:"phone-number-finder",
+                element:<PhoneNunberFinder/>
               }
               
              
