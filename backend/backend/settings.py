@@ -37,6 +37,7 @@ INSTALLED_APPS = [
         "lms",
         "student",
         "nurse",
+        "tms",
 
     "customuser",
     "contactform",

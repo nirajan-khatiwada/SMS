@@ -31,4 +31,5 @@ class StudentPhoneNumberSerializer(ModelSerializer):
         representation['last_name'] = instance.user.last_name
         representation['class_name'] = instance.class_name.name if instance.class_name else None
         representation['section'] = instance.section.name if instance.section else None
+        representation['roll_number'] = instance.roll_number
         return representation
