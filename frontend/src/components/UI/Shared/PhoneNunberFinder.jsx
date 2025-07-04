@@ -61,7 +61,7 @@ const StudentCard = ({ student }) => {
             </div>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm mb-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm mb-4">
             <div className="flex items-center space-x-2 text-gray-600">
               <Phone size={14} className="text-green-500" />
               <span className="font-medium">{student.phone_number}</span>
@@ -74,11 +74,15 @@ const StudentCard = ({ student }) => {
               <School size={14} className="text-purple-500" />
               <span>Section {student.section}</span>
             </div>
+            <div className="flex items-center space-x-2 text-gray-600">
+              <Hash size={14} className="text-orange-500" />
+              <span>Roll {student.roll_number}</span>
+            </div>
           </div>
 
           <div className="flex items-center justify-between">
             <div className="text-xs text-gray-500">
-              Student ID: {student.id}
+              Student ID: {student.id} | Roll: {student.roll_number}
             </div>
             <div className="flex items-center space-x-2">
               <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-green-50/80 text-green-600 border border-green-200/50">
@@ -95,7 +99,7 @@ const StudentCard = ({ student }) => {
               {student.first_name} {student.last_name}
             </div>
             <div className="text-xs text-gray-500">
-              Class {student.class_name} - {student.section}
+              Class {student.class_name} - {student.section} | Roll {student.roll_number}
             </div>
           </div>
         </div>
@@ -144,7 +148,8 @@ const PhoneNunberFinder = () => {
             fullName.includes(query) ||
             student.phone_number?.toLowerCase().includes(query) ||
             student.id?.toString().includes(query) ||
-            student.class_name?.toLowerCase().includes(query)
+            student.class_name?.toLowerCase().includes(query) ||
+            student.roll_number?.toString().includes(query)
           );
         }
       );
@@ -165,6 +170,8 @@ const PhoneNunberFinder = () => {
         return a.class_name.localeCompare(b.class_name);
       } else if (sortBy === "id") {
         return a.id - b.id;
+      } else if (sortBy === "roll") {
+        return parseInt(a.roll_number) - parseInt(b.roll_number);
       }
       return 0;
     });
@@ -255,7 +262,7 @@ const PhoneNunberFinder = () => {
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
               <input
                 type="text"
-                placeholder="Search by name, phone, ID, or class..."
+                placeholder="Search by name, phone, ID, roll number, or class..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pl-10 pr-4 py-3 bg-gray-50/50 border border-gray-200/50 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/50 transition-all duration-300"
@@ -285,6 +292,7 @@ const PhoneNunberFinder = () => {
               <option value="name">Sort by Name</option>
               <option value="class">Sort by Class</option>
               <option value="id">Sort by ID</option>
+              <option value="roll">Sort by Roll Number</option>
             </select>
           </div>
         </div>
@@ -297,7 +305,7 @@ const PhoneNunberFinder = () => {
           <div className="flex items-center space-x-2">
             <SortDesc size={16} />
             <span>
-              Sorted by {sortBy === "name" ? "name" : sortBy === "class" ? "class" : "ID"}
+              Sorted by {sortBy === "name" ? "name" : sortBy === "class" ? "class" : sortBy === "roll" ? "roll number" : "ID"}
             </span>
           </div>
         </div>

@@ -22,4 +22,6 @@ import TLayout from "./TMS/TLayout";
 import NDash from "./NMS/NDash";
 import Attandance from "./TMS/Attandance";
 import PhoneNunberFinder from "../components/UI/Shared/PhoneNunberFinder";
-export {Home, Layout, Pricing,Login,Contact,LLayout,LMClass,Principle,LABook,LBookHistory,LIBook,LRBook,LIR,LDashboard,NLayout,Profile,AddProduct,TotalProduct,NAllRecord,NAddRecord,TLayout,NDash,Attandance,PhoneNunberFinder};
+import AttandanceHistory from "./TMS/AttandanceHistory";
+import AttandanceStudent from "./TMS/AttandanceStudent";
+export {Home, Layout, Pricing,Login,Contact,LLayout,LMClass,Principle,LABook,LBookHistory,LIBook,LRBook,LIR,LDashboard,NLayout,Profile,AddProduct,TotalProduct,NAllRecord,NAddRecord,TLayout,NDash,Attandance,PhoneNunberFinder,AttandanceHistory,AttandanceStudent};

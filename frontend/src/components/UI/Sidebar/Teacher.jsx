@@ -19,6 +19,7 @@ import {
   Mail,
   User,
   LogOut,
+  History,
   Settings,
   FileText,
   Cog,
@@ -41,21 +42,21 @@ const sidebarMenuItems = [
     description: 'Overview of library statistics'
   },
   {
-    id: 'records',
-    name: 'Record Management',
+    id: 'Assignment',
+    name: 'Assignment Management',
     icon: <BookOpen />,
     hasSubmenu: true,
     submenu: [
       {
         id: 'all-records',
-        name: 'All Records',
+        name: 'All Assignments',
         path: '/nurse/all-record/',
         icon: <Library />,
         description: 'View and search all records'
       },
       {
-        id: 'add-record',
-        name: 'Add Record',
+        id: 'See Assignment',
+        name: 'Add assignment',
         path: '/nurse/add-record',
         icon: <Plus />,
         description: 'Add new record to system'
@@ -87,12 +88,19 @@ const sidebarMenuItems = [
         description: 'Add products to system'
       },
       {
-        id: 'total-product',
-        name: 'Total Product',
-        path: '/nurse/total-product/',
+        id: 'AttandanceHistory',
+        name: 'Attandance History',
+        path: '/teacher/attandance-history/',
         icon: <Library />,
         description: 'View all products in system'
       },
+      {
+        id:'student-history',
+        name: 'Student History',
+        path: '/teacher/student-history/',
+        icon: <History />,
+        description: 'View student history'
+      }
       
     ]
   },

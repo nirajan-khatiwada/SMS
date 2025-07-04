@@ -25,7 +25,9 @@ import {
   TLayout,
   NDash,
   Attandance,
-  PhoneNunberFinder
+  PhoneNunberFinder,
+  AttandanceHistory,
+  AttandanceStudent
   
 } from "./pages/Export.jsx";
 import { ToastContainer } from "react-toastify";
@@ -188,6 +190,14 @@ const router = createBrowserRouter([
               {
                 path:"phone-number-finder",
                 element:<PhoneNunberFinder/>
+              },
+              {
+                path:"attandance-history/",
+                element:<AttandanceHistory/>
+              },
+              {
+                path:"student-history",
+                element:<AttandanceStudent/>
               }
               
              
