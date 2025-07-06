@@ -1,0 +1,96 @@
+"filename", "language", "Docker", "JavaScript", "JavaScript JSX", "YAML", "Ignore", "Markdown", "Python", "pip requirements", "comment", "blank", "total"
+"d:\project\README.md", "Markdown", 0, 0, 0, 0, 0, -56, 0, 0, 0, -27, -83
+"d:\project\backend\.dockerignore", "Ignore", 0, 0, 0, 0, 18, 0, 0, 0, 8, 8, 34
+"d:\project\backend\Dockerfile", "Docker", 10, 0, 0, 0, 0, 0, 0, 0, 1, 10, 21
+"d:\project\backend\Notification\migrations\0001_initial.py", "Python", 0, 0, 0, 0, 0, 0, -4, 0, 0, 0, -4
+"d:\project\backend\Notification\migrations\0002_initial.py", "Python", 0, 0, 0, 0, 0, 0, 21, 0, 1, 7, 29
+"d:\project\backend\Notification\migrations\0002_notification_message.py", "Python", 0, 0, 0, 0, 0, 0, -12, 0, -1, -6, -19
+"d:\project\backend\Notification\models.py", "Python", 0, 0, 0, 0, 0, 0, -2, 0, 0, 1, -1
+"d:\project\backend\backend\settings.py", "Python", 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 2
+"d:\project\backend\backend\urls.py", "Python", 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 2
+"d:\project\backend\customauth\serializer.py", "Python", 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1
+"d:\project\backend\customuser\models.py", "Python", 0, 0, 0, 0, 0, 0, -2, 0, 0, 0, -2
+"d:\project\backend\customuser\views.py", "Python", 0, 0, 0, 0, 0, 0, 1, 0, 0, -1, 0
+"d:\project\backend\lms\admin.py", "Python", 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 2
+"d:\project\backend\lms\migrations\0001_initial.py", "Python", 0, 0, 0, 0, 0, 0, 42, 0, 0, 0, 42
+"d:\project\backend\lms\migrations\0002_alter_class_name_alter_section_name.py", "Python", 0, 0, 0, 0, 0, 0, 17, 0, 1, 6, 24
+"d:\project\backend\lms\migrations\0002_remove_class_section.py", "Python", 0, 0, 0, 0, 0, 0, -11, 0, -1, -6, -18
+"d:\project\backend\lms\migrations\0003_book.py", "Python", 0, 0, 0, 0, 0, 0, -19, 0, -1, -6, -26
+"d:\project\backend\lms\migrations\0004_book_created_at.py", "Python", 0, 0, 0, 0, 0, 0, -12, 0, -1, -6, -19
+"d:\project\backend\lms\migrations\0005_alter_book_class_name_alter_book_section_and_more.py", "Python", 0, 0, 0, 0, 0, 0, -25, 0, -1, -6, -32
+"d:\project\backend\lms\migrations\0006_bookissue.py", "Python", 0, 0, 0, 0, 0, 0, -19, 0, -1, -6, -26
+"d:\project\backend\lms\migrations\0007_bookreturn.py", "Python", 0, 0, 0, 0, 0, 0, -16, 0, -1, -6, -23
+"d:\project\backend\lms\migrations\0008_bookissue_has_returned_bookreturn_fine_amount.py", "Python", 0, 0, 0, 0, 0, 0, -17, 0, -1, -6, -24
+"d:\project\backend\lms\migrations\0009_bookreturn_condition_bookreturn_note.py", "Python", 0, 0, 0, 0, 0, 0, -17, 0, -1, -6, -24
+"d:\project\backend\lms\models.py", "Python", 0, 0, 0, 0, 0, 0, 4, 0, 0, 5, 9
+"d:\project\backend\lms\serializer.py", "Python", 0, 0, 0, 0, 0, 0, 7, 0, 0, 4, 11
+"d:\project\backend\lms\urls.py", "Python", 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 4
+"d:\project\backend\lms\views.py", "Python", 0, 0, 0, 0, 0, 0, 68, 0, 0, 9, 77
+"d:\project\backend\nurse\__init__.py", "Python", 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"d:\project\backend\nurse\admin.py", "Python", 0, 0, 0, 0, 0, 0, 4, 0, 1, 0, 5
+"d:\project\backend\nurse\apps.py", "Python", 0, 0, 0, 0, 0, 0, 4, 0, 0, 3, 7
+"d:\project\backend\nurse\migrations\0001_initial.py", "Python", 0, 0, 0, 0, 0, 0, 34, 0, 1, 7, 42
+"d:\project\backend\nurse\migrations\__init__.py", "Python", 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"d:\project\backend\nurse\models.py", "Python", 0, 0, 0, 0, 0, 0, 29, 0, 1, 11, 41
+"d:\project\backend\nurse\serializer.py", "Python", 0, 0, 0, 0, 0, 0, 38, 0, 0, 21, 59
+"d:\project\backend\nurse\tests.py", "Python", 0, 0, 0, 0, 0, 0, 1, 0, 1, 2, 4
+"d:\project\backend\nurse\urls.py", "Python", 0, 0, 0, 0, 0, 0, 8, 0, 0, 1, 9
+"d:\project\backend\nurse\views.py", "Python", 0, 0, 0, 0, 0, 0, 76, 0, 1, 8, 85
+"d:\project\backend\requirements.txt", "pip requirements", 0, 0, 0, 0, 0, 0, 0, 19, 0, 0, 19
+"d:\project\backend\student\migrations\0001_initial.py", "Python", 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 2
+"d:\project\backend\student\migrations\0002_studentprofile_father_name_and_more.py", "Python", 0, 0, 0, 0, 0, 0, -17, 0, -1, -6, -24
+"d:\project\backend\student\serializer.py", "Python", 0, 0, 0, 0, 0, 0, 13, 0, 0, 0, 13
+"d:\project\backend\student\urls.py", "Python", 0, 0, 0, 0, 0, 0, -1, 0, 0, 1, 0
+"d:\project\backend\student\views.py", "Python", 0, 0, 0, 0, 0, 0, -30, 0, 0, -2, -32
+"d:\project\backend\tms\__init__.py", "Python", 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"d:\project\backend\tms\admin.py", "Python", 0, 0, 0, 0, 0, 0, 3, 0, 1, 2, 6
+"d:\project\backend\tms\apps.py", "Python", 0, 0, 0, 0, 0, 0, 4, 0, 0, 3, 7
+"d:\project\backend\tms\migrations\0001_initial.py", "Python", 0, 0, 0, 0, 0, 0, 23, 0, 1, 7, 31
+"d:\project\backend\tms\migrations\__init__.py", "Python", 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"d:\project\backend\tms\models.py", "Python", 0, 0, 0, 0, 0, 0, 12, 0, 1, 6, 19
+"d:\project\backend\tms\serializer.py", "Python", 0, 0, 0, 0, 0, 0, 50, 0, 0, 9, 59
+"d:\project\backend\tms\tests.py", "Python", 0, 0, 0, 0, 0, 0, 1, 0, 1, 2, 4
+"d:\project\backend\tms\urls.py", "Python", 0, 0, 0, 0, 0, 0, 6, 0, 0, 1, 7
+"d:\project\backend\tms\views.py", "Python", 0, 0, 0, 0, 0, 0, 70, 0, 3, 15, 88
+"d:\project\docker\docker-compose.yml", "YAML", 0, 0, 0, 16, 0, 0, 0, 0, 0, 2, 18
+"d:\project\frontend\.dockerignore", "Ignore", 0, 0, 0, 0, 2, 0, 0, 0, 0, 1, 3
+"d:\project\frontend\Dockerfile", "Docker", 7, 0, 0, 0, 0, 0, 0, 0, 7, 0, 14
+"d:\project\frontend\src\App.jsx", "JavaScript JSX", 0, 0, 94, 0, 0, 0, 0, 0, 0, 4, 98
+"d:\project\frontend\src\api\nurse.jsx", "JavaScript JSX", 0, 0, 34, 0, 0, 0, 0, 0, 0, 13, 47
+"d:\project\frontend\src\api\student.jsx", "JavaScript JSX", 0, 0, 12, 0, 0, 0, 0, 0, 0, 3, 15
+"d:\project\frontend\src\api\teacher.jsx", "JavaScript JSX", 0, 0, 21, 0, 0, 0, 0, 0, 0, 7, 28
+"d:\project\frontend\src\components\UI\Library\Sidebar.jsx", "JavaScript JSX", 0, 0, -341, 0, 0, 0, 0, 0, -11, -32, -384
+"d:\project\frontend\src\components\UI\Shared\PhoneNunberFinder.jsx", "JavaScript JSX", 0, 0, 308, 0, 0, 0, 0, 0, 16, 27, 351
+"d:\project\frontend\src\components\UI\Shared\PrincipleN.jsx", "JavaScript JSX", 0, 0, 480, 0, 0, 0, 0, 0, 21, 29, 530
+"d:\project\frontend\src\components\UI\Shared\Profile.jsx", "JavaScript JSX", 0, 0, 609, 0, 0, 0, 0, 0, 29, 35, 673
+"d:\project\frontend\src\components\UI\Sidebar\Library.jsx", "JavaScript JSX", 0, 0, 350, 0, 0, 0, 0, 0, 11, 34, 395
+"d:\project\frontend\src\components\UI\Sidebar\Nurse.jsx", "JavaScript JSX", 0, 0, 334, 0, 0, 0, 0, 0, 11, 32, 377
+"d:\project\frontend\src\components\UI\Sidebar\Teacher.jsx", "JavaScript JSX", 0, 0, 345, 0, 0, 0, 0, 0, 11, 33, 389
+"d:\project\frontend\src\context\Auth.jsx", "JavaScript JSX", 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1
+"d:\project\frontend\src\pages\Contact.jsx", "JavaScript JSX", 0, 0, 1, 0, 0, 0, 0, 0, 0, -1, 0
+"d:\project\frontend\src\pages\Export.jsx", "JavaScript JSX", 0, 0, 11, 0, 0, 0, 0, 0, 0, 0, 11
+"d:\project\frontend\src\pages\LMS\LDashboard.jsx", "JavaScript JSX", 0, 0, 420, 0, 0, 0, 0, 0, 15, 31, 466
+"d:\project\frontend\src\pages\LMS\LIR.jsx", "JavaScript JSX", 0, 0, 148, 0, 0, 0, 0, 0, 3, 8, 159
+"d:\project\frontend\src\pages\LMS\LPrinciple.jsx", "JavaScript JSX", 0, 0, -480, 0, 0, 0, 0, 0, -21, -29, -530
+"d:\project\frontend\src\pages\LMS\LRBook.jsx", "JavaScript JSX", 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 8
+"d:\project\frontend\src\pages\LMS\Lprofile.jsx", "JavaScript JSX", 0, 0, -609, 0, 0, 0, 0, 0, -29, -35, -673
+"d:\project\frontend\src\pages\NMS\AddProduct.jsx", "JavaScript JSX", 0, 0, 228, 0, 0, 0, 0, 0, 10, 25, 263
+"d:\project\frontend\src\pages\NMS\NAddRecord.jsx", "JavaScript JSX", 0, 0, 518, 0, 0, 0, 0, 0, 30, 52, 600
+"d:\project\frontend\src\pages\NMS\NAllRecord.jsx", "JavaScript JSX", 0, 0, 508, 0, 0, 0, 0, 0, 21, 44, 573
+"d:\project\frontend\src\pages\NMS\NDash.jsx", "JavaScript JSX", 0, 0, 562, 0, 0, 0, 0, 0, 21, 53, 636
+"d:\project\frontend\src\pages\NMS\NLayout.jsx", "JavaScript JSX", 0, 0, 11, 0, 0, 0, 0, 0, 0, 3, 14
+"d:\project\frontend\src\pages\NMS\TotalProduct.jsx", "JavaScript JSX", 0, 0, 586, 0, 0, 0, 0, 0, 22, 51, 659
+"d:\project\frontend\src\pages\TMS\Attandance.jsx", "JavaScript JSX", 0, 0, 561, 0, 0, 0, 0, 0, 31, 63, 655
+"d:\project\frontend\src\pages\TMS\AttandanceHistory.jsx", "JavaScript JSX", 0, 0, 415, 0, 0, 0, 0, 0, 22, 41, 478
+"d:\project\frontend\src\pages\TMS\AttandanceStudent.jsx", "JavaScript JSX", 0, 0, 455, 0, 0, 0, 0, 0, 26, 46, 527
+"d:\project\frontend\src\pages\TMS\TLayout.jsx", "JavaScript JSX", 0, 0, 11, 0, 0, 0, 0, 0, 0, 3, 14
+"d:\project\frontend\src\routes\ExportRoute.jsx", "JavaScript JSX", 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 2
+"d:\project\frontend\src\routes\NurseRoute.jsx", "JavaScript JSX", 0, 0, 10, 0, 0, 0, 0, 0, 0, 1, 11
+"d:\project\frontend\src\routes\PublicRoute.jsx", "JavaScript JSX", 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 2
+"d:\project\frontend\src\routes\TeacherRoute.jsx", "JavaScript JSX", 0, 0, 11, 0, 0, 0, 0, 0, 0, 3, 14
+"d:\project\frontend\tailwind.config.js", "JavaScript", 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 4
+"d:\project\frontend\vite.config.js", "JavaScript", 0, 10, 0, 0, 0, 0, 0, 0, 2, 1, 13
+"d:\project\lol.md", "Markdown", 0, 0, 0, 0, 0, -437, 0, 0, 0, -75, -512
+"d:\project\main.py", "Python", 0, 0, 0, 0, 0, 0, -49, 0, 0, -8, -57
+"d:\project\test.md", "Markdown", 0, 0, 0, 0, 0, 168, 0, 0, 0, 49, 217
+"Total", "-", 17, 14, 5625, 16, 20, -325, 296, 19, 261, 578, 6521

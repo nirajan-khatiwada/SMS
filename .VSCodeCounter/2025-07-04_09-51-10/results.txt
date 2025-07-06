@@ -1,0 +1,231 @@
+Date : 2025-07-04 09:51:10
+Directory : d:\project
+Total : 149 files,  17636 codes, 592 comments, 1647 blanks, all 19875 lines
+
+Languages
++------------------+------------+------------+------------+------------+------------+
+| language         | files      | code       | comment    | blank      | total      |
++------------------+------------+------------+------------+------------+------------+
+| JavaScript JSX   |         51 |     11,893 |        474 |      1,108 |     13,475 |
+| JSON             |          2 |      3,864 |          0 |          2 |      3,866 |
+| Python           |         81 |      1,388 |         96 |        412 |      1,896 |
+| Markdown         |          3 |        333 |          0 |         94 |        427 |
+| JavaScript       |          3 |         60 |          4 |          6 |         70 |
+| Ignore           |          2 |         20 |          8 |          9 |         37 |
+| pip requirements |          1 |         19 |          0 |          0 |         19 |
+| Docker           |          2 |         17 |          8 |         10 |         35 |
+| YAML             |          1 |         16 |          0 |          2 |         18 |
+| Django HTML      |          1 |         13 |          0 |          1 |         14 |
+| PostCSS          |          1 |         12 |          2 |          3 |         17 |
+| XML              |          1 |          1 |          0 |          0 |          1 |
++------------------+------------+------------+------------+------------+------------+
+
+Directories
++-------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                          | files      | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                             |        149 |     17,636 |        592 |      1,647 |     19,875 |
+| . (Files)                                                                     |          2 |        326 |          0 |         88 |        414 |
+| backend                                                                       |         84 |      1,435 |        105 |        430 |      1,970 |
+| backend (Files)                                                               |          5 |         62 |         12 |         24 |         98 |
+| backend\Notification                                                          |         11 |         93 |          5 |         41 |        139 |
+| backend\Notification (Files)                                                  |          8 |         54 |          3 |         26 |         83 |
+| backend\Notification\migrations                                               |          3 |         39 |          2 |         15 |         56 |
+| backend\backend                                                               |          5 |        108 |         59 |         55 |        222 |
+| backend\contactform                                                           |          9 |         61 |          4 |         21 |         86 |
+| backend\contactform (Files)                                                   |          7 |         41 |          3 |         13 |         57 |
+| backend\contactform\migrations                                                |          2 |         20 |          1 |          8 |         29 |
+| backend\customauth                                                            |          5 |         73 |          1 |         20 |         94 |
+| backend\customuser                                                            |          9 |        162 |          2 |         40 |        204 |
+| backend\customuser (Files)                                                    |          7 |        132 |          1 |         32 |        165 |
+| backend\customuser\migrations                                                 |          2 |         30 |          1 |          8 |         39 |
+| backend\lms                                                                   |         10 |        358 |          5 |         89 |        452 |
+| backend\lms (Files)                                                           |          7 |        276 |          3 |         75 |        354 |
+| backend\lms\migrations                                                        |          3 |         82 |          2 |         14 |         98 |
+| backend\nurse                                                                 |         10 |        194 |          5 |         55 |        254 |
+| backend\nurse (Files)                                                         |          8 |        160 |          4 |         47 |        211 |
+| backend\nurse\migrations                                                      |          2 |         34 |          1 |          8 |         43 |
+| backend\student                                                               |         10 |        155 |          5 |         38 |        198 |
+| backend\student (Files)                                                       |          8 |        119 |          4 |         30 |        153 |
+| backend\student\migrations                                                    |          2 |         36 |          1 |          8 |         45 |
+| backend\tms                                                                   |         10 |        169 |          7 |         47 |        223 |
+| backend\tms (Files)                                                           |          8 |        146 |          6 |         39 |        191 |
+| backend\tms\migrations                                                        |          2 |         23 |          1 |          8 |         32 |
+| docker                                                                        |          1 |         16 |          0 |          2 |         18 |
+| frontend                                                                      |         62 |     15,859 |        487 |      1,127 |     17,473 |
+| frontend (Files)                                                              |          9 |      3,953 |         11 |         16 |      3,980 |
+| frontend\src                                                                  |         53 |     11,906 |        476 |      1,111 |     13,493 |
+| frontend\src (Files)                                                          |          3 |        245 |          3 |         18 |        266 |
+| frontend\src\api                                                              |          5 |        201 |          0 |         56 |        257 |
+| frontend\src\assets                                                           |          1 |          1 |          0 |          0 |          1 |
+| frontend\src\components                                                       |         12 |      3,260 |        142 |        259 |      3,661 |
+| frontend\src\components\SmallComponent                                        |          2 |         83 |          3 |          7 |         93 |
+| frontend\src\components\UI                                                    |         10 |      3,177 |        139 |        252 |      3,568 |
+| frontend\src\components\UI (Files)                                            |          4 |        751 |         40 |         62 |        853 |
+| frontend\src\components\UI\Shared                                             |          3 |      1,397 |         66 |         91 |      1,554 |
+| frontend\src\components\UI\Sidebar                                            |          3 |      1,029 |         33 |         99 |      1,161 |
+| frontend\src\context                                                          |          1 |         71 |          0 |         18 |         89 |
+| frontend\src\hooks                                                            |          1 |          7 |          0 |          0 |          7 |
+| frontend\src\pages                                                            |         24 |      8,063 |        331 |        750 |      9,144 |
+| frontend\src\pages (Files)                                                    |          6 |        537 |          9 |         44 |        590 |
+| frontend\src\pages\LMS                                                        |          8 |      3,671 |        139 |        325 |      4,135 |
+| frontend\src\pages\NMS                                                        |          6 |      2,413 |        104 |        228 |      2,745 |
+| frontend\src\pages\TMS                                                        |          4 |      1,442 |         79 |        153 |      1,674 |
+| frontend\src\routes                                                           |          6 |         58 |          0 |         10 |         68 |
++-------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-------------------------------------------------------------------------------+------------------+------------+------------+------------+------------+
+| filename                                                                      | language         | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------+------------------+------------+------------+------------+------------+
+| d:\project\README.md                                                          | Markdown         |        158 |          0 |         39 |        197 |
+| d:\project\backend\.dockerignore                                              | Ignore           |         18 |          8 |          8 |         34 |
+| d:\project\backend\Dockerfile                                                 | Docker           |         10 |          1 |         10 |         21 |
+| d:\project\backend\Notification\__init__.py                                   | Python           |          0 |          0 |          1 |          1 |
+| d:\project\backend\Notification\admin.py                                      | Python           |          3 |          1 |          2 |          6 |
+| d:\project\backend\Notification\apps.py                                       | Python           |          4 |          0 |          3 |          7 |
+| d:\project\backend\Notification\migrations\0001_initial.py                    | Python           |         18 |          1 |          7 |         26 |
+| d:\project\backend\Notification\migrations\0002_initial.py                    | Python           |         21 |          1 |          7 |         29 |
+| d:\project\backend\Notification\migrations\__init__.py                        | Python           |          0 |          0 |          1 |          1 |
+| d:\project\backend\Notification\models.py                                     | Python           |         18 |          1 |          8 |         27 |
+| d:\project\backend\Notification\serializer.py                                 | Python           |         10 |          0 |          6 |         16 |
+| d:\project\backend\Notification\tests.py                                      | Python           |          1 |          1 |          2 |          4 |
+| d:\project\backend\Notification\urls.py                                       | Python           |          5 |          0 |          2 |          7 |
+| d:\project\backend\Notification\views.py                                      | Python           |         13 |          0 |          2 |         15 |
+| d:\project\backend\backend\__init__.py                                        | Python           |          0 |          0 |          1 |          1 |
+| d:\project\backend\backend\asgi.py                                            | Python           |          4 |          8 |          5 |         17 |
+| d:\project\backend\backend\settings.py                                        | Python           |         85 |         27 |         41 |        153 |
+| d:\project\backend\backend\urls.py                                            | Python           |         15 |         16 |          3 |         34 |
+| d:\project\backend\backend\wsgi.py                                            | Python           |          4 |          8 |          5 |         17 |
+| d:\project\backend\contactform\__init__.py                                    | Python           |          0 |          0 |          1 |          1 |
+| d:\project\backend\contactform\admin.py                                       | Python           |          3 |          1 |          1 |          5 |
+| d:\project\backend\contactform\apps.py                                        | Python           |          4 |          0 |          3 |          7 |
+| d:\project\backend\contactform\migrations\0001_initial.py                     | Python           |         20 |          1 |          7 |         28 |
+| d:\project\backend\contactform\migrations\__init__.py                         | Python           |          0 |          0 |          1 |          1 |
+| d:\project\backend\contactform\models.py                                      | Python           |         10 |          1 |          3 |         14 |
+| d:\project\backend\contactform\serializer.py                                  | Python           |          7 |          0 |          1 |          8 |
+| d:\project\backend\contactform\urls.py                                        | Python           |          5 |          0 |          1 |          6 |
+| d:\project\backend\contactform\views.py                                       | Python           |         12 |          1 |          3 |         16 |
+| d:\project\backend\customauth\apps.py                                         | Python           |          4 |          0 |          3 |          7 |
+| d:\project\backend\customauth\serializer.py                                   | Python           |         38 |          0 |          7 |         45 |
+| d:\project\backend\customauth\tests.py                                        | Python           |          1 |          1 |          2 |          4 |
+| d:\project\backend\customauth\urls.py                                         | Python           |          8 |          0 |          2 |         10 |
+| d:\project\backend\customauth\views.py                                        | Python           |         22 |          0 |          6 |         28 |
+| d:\project\backend\customuser\__init__.py                                     | Python           |          0 |          0 |          1 |          1 |
+| d:\project\backend\customuser\admin.py                                        | Python           |         24 |          0 |          7 |         31 |
+| d:\project\backend\customuser\apps.py                                         | Python           |          4 |          0 |          3 |          7 |
+| d:\project\backend\customuser\migrations\0001_initial.py                      | Python           |         30 |          1 |          7 |         38 |
+| d:\project\backend\customuser\migrations\__init__.py                          | Python           |          0 |          0 |          1 |          1 |
+| d:\project\backend\customuser\models.py                                       | Python           |         40 |          1 |         11 |         52 |
+| d:\project\backend\customuser\serializer.py                                   | Python           |         28 |          0 |          4 |         32 |
+| d:\project\backend\customuser\urls.py                                         | Python           |          6 |          0 |          1 |          7 |
+| d:\project\backend\customuser\views.py                                        | Python           |         30 |          0 |          5 |         35 |
+| d:\project\backend\debug_admin.py                                             | Python           |          0 |          0 |          1 |          1 |
+| d:\project\backend\lms\__init__.py                                            | Python           |          0 |          0 |          1 |          1 |
+| d:\project\backend\lms\admin.py                                               | Python           |          7 |          1 |          5 |         13 |
+| d:\project\backend\lms\apps.py                                                | Python           |          4 |          0 |          3 |          7 |
+| d:\project\backend\lms\migrations\0001_initial.py                             | Python           |         65 |          1 |          7 |         73 |
+| d:\project\backend\lms\migrations\0002_alter_class_name_alter_section_name.py | Python           |         17 |          1 |          6 |         24 |
+| d:\project\backend\lms\migrations\__init__.py                                 | Python           |          0 |          0 |          1 |          1 |
+| d:\project\backend\lms\models.py                                              | Python           |         35 |          1 |         11 |         47 |
+| d:\project\backend\lms\serializer.py                                          | Python           |         83 |          1 |         35 |        119 |
+| d:\project\backend\lms\urls.py                                                | Python           |         12 |          0 |          2 |         14 |
+| d:\project\backend\lms\views.py                                               | Python           |        135 |          0 |         18 |        153 |
+| d:\project\backend\manage.py                                                  | Python           |         15 |          3 |          5 |         23 |
+| d:\project\backend\nurse\__init__.py                                          | Python           |          0 |          0 |          1 |          1 |
+| d:\project\backend\nurse\admin.py                                             | Python           |          4 |          1 |          0 |          5 |
+| d:\project\backend\nurse\apps.py                                              | Python           |          4 |          0 |          3 |          7 |
+| d:\project\backend\nurse\migrations\0001_initial.py                           | Python           |         34 |          1 |          7 |         42 |
+| d:\project\backend\nurse\migrations\__init__.py                               | Python           |          0 |          0 |          1 |          1 |
+| d:\project\backend\nurse\models.py                                            | Python           |         29 |          1 |         11 |         41 |
+| d:\project\backend\nurse\serializer.py                                        | Python           |         38 |          0 |         21 |         59 |
+| d:\project\backend\nurse\tests.py                                             | Python           |          1 |          1 |          2 |          4 |
+| d:\project\backend\nurse\urls.py                                              | Python           |          8 |          0 |          1 |          9 |
+| d:\project\backend\nurse\views.py                                             | Python           |         76 |          1 |          8 |         85 |
+| d:\project\backend\requirements.txt                                           | pip requirements |         19 |          0 |          0 |         19 |
+| d:\project\backend\student\__init__.py                                        | Python           |          0 |          0 |          1 |          1 |
+| d:\project\backend\student\admin.py                                           | Python           |          5 |          1 |          0 |          6 |
+| d:\project\backend\student\apps.py                                            | Python           |          4 |          0 |          3 |          7 |
+| d:\project\backend\student\migrations\0001_initial.py                         | Python           |         36 |          1 |          7 |         44 |
+| d:\project\backend\student\migrations\__init__.py                             | Python           |          0 |          0 |          1 |          1 |
+| d:\project\backend\student\models.py                                          | Python           |         20 |          1 |          5 |         26 |
+| d:\project\backend\student\serializer.py                                      | Python           |         31 |          0 |          5 |         36 |
+| d:\project\backend\student\tests.py                                           | Python           |          1 |          1 |          2 |          4 |
+| d:\project\backend\student\urls.py                                            | Python           |          8 |          0 |          3 |         11 |
+| d:\project\backend\student\views.py                                           | Python           |         50 |          1 |         11 |         62 |
+| d:\project\backend\tms\__init__.py                                            | Python           |          0 |          0 |          1 |          1 |
+| d:\project\backend\tms\admin.py                                               | Python           |          3 |          1 |          2 |          6 |
+| d:\project\backend\tms\apps.py                                                | Python           |          4 |          0 |          3 |          7 |
+| d:\project\backend\tms\migrations\0001_initial.py                             | Python           |         23 |          1 |          7 |         31 |
+| d:\project\backend\tms\migrations\__init__.py                                 | Python           |          0 |          0 |          1 |          1 |
+| d:\project\backend\tms\models.py                                              | Python           |         12 |          1 |          6 |         19 |
+| d:\project\backend\tms\serializer.py                                          | Python           |         50 |          0 |          9 |         59 |
+| d:\project\backend\tms\tests.py                                               | Python           |          1 |          1 |          2 |          4 |
+| d:\project\backend\tms\urls.py                                                | Python           |          6 |          0 |          1 |          7 |
+| d:\project\backend\tms\views.py                                               | Python           |         70 |          3 |         15 |         88 |
+| d:\project\docker\docker-compose.yml                                          | YAML             |         16 |          0 |          2 |         18 |
+| d:\project\frontend\.dockerignore                                             | Ignore           |          2 |          0 |          1 |          3 |
+| d:\project\frontend\Dockerfile                                                | Docker           |          7 |          7 |          0 |         14 |
+| d:\project\frontend\README.md                                                 | Markdown         |          7 |          0 |          6 |         13 |
+| d:\project\frontend\eslint.config.js                                          | JavaScript       |         32 |          0 |          2 |         34 |
+| d:\project\frontend\index.html                                                | Django HTML      |         13 |          0 |          1 |         14 |
+| d:\project\frontend\package-lock.json                                         | JSON             |      3,827 |          0 |          1 |      3,828 |
+| d:\project\frontend\package.json                                              | JSON             |         37 |          0 |          1 |         38 |
+| d:\project\frontend\src\App.jsx                                               | JavaScript JSX   |        224 |          1 |         13 |        238 |
+| d:\project\frontend\src\api\api.jsx                                           | JavaScript JSX   |         45 |          0 |         14 |         59 |
+| d:\project\frontend\src\api\libriary.jsx                                      | JavaScript JSX   |         83 |          0 |         17 |        100 |
+| d:\project\frontend\src\api\nurse.jsx                                         | JavaScript JSX   |         34 |          0 |         13 |         47 |
+| d:\project\frontend\src\api\student.jsx                                       | JavaScript JSX   |         18 |          0 |          5 |         23 |
+| d:\project\frontend\src\api\teacher.jsx                                       | JavaScript JSX   |         21 |          0 |          7 |         28 |
+| d:\project\frontend\src\assets\react.svg                                      | XML              |          1 |          0 |          0 |          1 |
+| d:\project\frontend\src\components\SmallComponent\BuyNow.jsx                  | JavaScript JSX   |         11 |          0 |          2 |         13 |
+| d:\project\frontend\src\components\SmallComponent\PricingCard.jsx             | JavaScript JSX   |         72 |          3 |          5 |         80 |
+| d:\project\frontend\src\components\UI\Footer.jsx                              | JavaScript JSX   |        189 |         10 |         11 |        210 |
+| d:\project\frontend\src\components\UI\Hero.jsx                                | JavaScript JSX   |        151 |         13 |         20 |        184 |
+| d:\project\frontend\src\components\UI\Navbar.jsx                              | JavaScript JSX   |        187 |          8 |         14 |        209 |
+| d:\project\frontend\src\components\UI\OverView.jsx                            | JavaScript JSX   |        224 |          9 |         17 |        250 |
+| d:\project\frontend\src\components\UI\Shared\PhoneNunberFinder.jsx            | JavaScript JSX   |        308 |         16 |         27 |        351 |
+| d:\project\frontend\src\components\UI\Shared\PrincipleN.jsx                   | JavaScript JSX   |        480 |         21 |         29 |        530 |
+| d:\project\frontend\src\components\UI\Shared\Profile.jsx                      | JavaScript JSX   |        609 |         29 |         35 |        673 |
+| d:\project\frontend\src\components\UI\Sidebar\Library.jsx                     | JavaScript JSX   |        350 |         11 |         34 |        395 |
+| d:\project\frontend\src\components\UI\Sidebar\Nurse.jsx                       | JavaScript JSX   |        334 |         11 |         32 |        377 |
+| d:\project\frontend\src\components\UI\Sidebar\Teacher.jsx                     | JavaScript JSX   |        345 |         11 |         33 |        389 |
+| d:\project\frontend\src\context\Auth.jsx                                      | JavaScript JSX   |         71 |          0 |         18 |         89 |
+| d:\project\frontend\src\hooks\pageTitle.jsx                                   | JavaScript JSX   |          7 |          0 |          0 |          7 |
+| d:\project\frontend\src\index.css                                             | PostCSS          |         12 |          2 |          3 |         17 |
+| d:\project\frontend\src\main.jsx                                              | JavaScript JSX   |          9 |          0 |          2 |         11 |
+| d:\project\frontend\src\pages\Contact.jsx                                     | JavaScript JSX   |        175 |          2 |         10 |        187 |
+| d:\project\frontend\src\pages\Export.jsx                                      | JavaScript JSX   |         27 |          0 |          0 |         27 |
+| d:\project\frontend\src\pages\Home.jsx                                        | JavaScript JSX   |         13 |          0 |          4 |         17 |
+| d:\project\frontend\src\pages\LMS\LABook.jsx                                  | JavaScript JSX   |        306 |         14 |         43 |        363 |
+| d:\project\frontend\src\pages\LMS\LBookHistory.jsx                            | JavaScript JSX   |        666 |         29 |         61 |        756 |
+| d:\project\frontend\src\pages\LMS\LDashboard.jsx                              | JavaScript JSX   |        427 |         15 |         33 |        475 |
+| d:\project\frontend\src\pages\LMS\LIBook.jsx                                  | JavaScript JSX   |        593 |         28 |         48 |        669 |
+| d:\project\frontend\src\pages\LMS\LIR.jsx                                     | JavaScript JSX   |        658 |         14 |         44 |        716 |
+| d:\project\frontend\src\pages\LMS\LMClass.jsx                                 | JavaScript JSX   |        592 |         30 |         48 |        670 |
+| d:\project\frontend\src\pages\LMS\LRBook.jsx                                  | JavaScript JSX   |        418 |          9 |         46 |        473 |
+| d:\project\frontend\src\pages\LMS\Layout.jsx                                  | JavaScript JSX   |         11 |          0 |          2 |         13 |
+| d:\project\frontend\src\pages\Layout.jsx                                      | JavaScript JSX   |         13 |          0 |          2 |         15 |
+| d:\project\frontend\src\pages\Login.jsx                                       | JavaScript JSX   |        179 |          7 |         21 |        207 |
+| d:\project\frontend\src\pages\NMS\AddProduct.jsx                              | JavaScript JSX   |        228 |         10 |         25 |        263 |
+| d:\project\frontend\src\pages\NMS\NAddRecord.jsx                              | JavaScript JSX   |        518 |         30 |         52 |        600 |
+| d:\project\frontend\src\pages\NMS\NAllRecord.jsx                              | JavaScript JSX   |        508 |         21 |         44 |        573 |
+| d:\project\frontend\src\pages\NMS\NDash.jsx                                   | JavaScript JSX   |        562 |         21 |         53 |        636 |
+| d:\project\frontend\src\pages\NMS\NLayout.jsx                                 | JavaScript JSX   |         11 |          0 |          3 |         14 |
+| d:\project\frontend\src\pages\NMS\TotalProduct.jsx                            | JavaScript JSX   |        586 |         22 |         51 |        659 |
+| d:\project\frontend\src\pages\Pricing.jsx                                     | JavaScript JSX   |        130 |          0 |          7 |        137 |
+| d:\project\frontend\src\pages\TMS\Attandance.jsx                              | JavaScript JSX   |        561 |         31 |         63 |        655 |
+| d:\project\frontend\src\pages\TMS\AttandanceHistory.jsx                       | JavaScript JSX   |        415 |         22 |         41 |        478 |
+| d:\project\frontend\src\pages\TMS\AttandanceStudent.jsx                       | JavaScript JSX   |        455 |         26 |         46 |        527 |
+| d:\project\frontend\src\pages\TMS\TLayout.jsx                                 | JavaScript JSX   |         11 |          0 |          3 |         14 |
+| d:\project\frontend\src\routes\AuthRoute.jsx                                  | JavaScript JSX   |         10 |          0 |          1 |         11 |
+| d:\project\frontend\src\routes\ExportRoute.jsx                                | JavaScript JSX   |          6 |          0 |          0 |          6 |
+| d:\project\frontend\src\routes\LibrianRoute.jsx                               | JavaScript JSX   |         10 |          0 |          3 |         13 |
+| d:\project\frontend\src\routes\NurseRoute.jsx                                 | JavaScript JSX   |         10 |          0 |          1 |         11 |
+| d:\project\frontend\src\routes\PublicRoute.jsx                                | JavaScript JSX   |         11 |          0 |          2 |         13 |
+| d:\project\frontend\src\routes\TeacherRoute.jsx                               | JavaScript JSX   |         11 |          0 |          3 |         14 |
+| d:\project\frontend\tailwind.config.js                                        | JavaScript       |         10 |          1 |          1 |         12 |
+| d:\project\frontend\vite.config.js                                            | JavaScript       |         18 |          3 |          3 |         24 |
+| d:\project\test.md                                                            | Markdown         |        168 |          0 |         49 |        217 |
+| Total                                                                         |                  |     17,636 |        592 |      1,647 |     19,875 |
++-------------------------------------------------------------------------------+------------------+------------+------------+------------+------------+

@@ -1,6 +1,7 @@
 from os import write
 from rest_framework import serializers
-from .models import AttandanceRecord
+from .models import AttandanceRecord,Assignment,AssignmentSubmission
+from student.models import StudentProfile
 from rest_framework.serializers import ModelSerializer
 from .models import Class, Section
 
@@ -56,4 +57,43 @@ class FromTo(serializers.Serializer):
             'total_attendance': instance['total_attendance'],
             'total_present': instance.get('total_present', 0)  # Optional field
         }
+    
+
+class AssignmentSerializer(ModelSerializer):
+    submitted = serializers.SerializerMethodField()
+    class Meta:
+        model = Assignment
+        fields = [
+            "id",
+            "title",
+            "description",
+            "due_date",
+            "assigned_date",
+            "class_name",
+            "section",
+            "teacher",
+            "subject",
+            "upload_file",
+            "submitted",
+        ]
+    def get_submitted(self, obj):
+        total_student = StudentProfile.objects.filter(
+            class_name=obj.class_name,
+            section=obj.section
+        ).count()
+        total_submissions = AssignmentSubmission.objects.filter(assignment=obj).count()
+        return {
+            'total_submissions': total_submissions,
+            'total_students': total_student,
+            'percentage': (total_submissions / total_student * 100) if total_student > 0 else 0
+        }
+    
+
+ 
+        
+    
+
+
+
+        
     

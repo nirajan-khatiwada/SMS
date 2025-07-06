@@ -24,4 +24,55 @@ const getAttendanceRecordByDateRange = async (fromDate, toDate, className, secti
     return response.data;
 }
 
-export { getAttandanceRecord, createAttandanceRecord,getAttendanceRecordByDateRange };
+const getAllAssignments = async () => {
+    const response = await axiosInstance.get(`/tms/assignments/`);
+    return response.data;
+}
+
+const createAssignment = async (assignmentData) => {
+    // For file uploads, we need to override the default content-type header
+    const config = {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+        },
+    };
+    
+    const response = await axiosInstance.post(`/tms/assignments/`, assignmentData, config);
+    return response.data;
+}
+
+const updateAssignment = async (assignmentId, assignmentData) => {
+    // For file uploads, we need to override the default content-type header
+    const config = {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+        },
+    };
+    
+    const response = await axiosInstance.put(`/tms/assignments/${assignmentId}/`, assignmentData, config);
+    return response.data;
+}
+
+const deleteAssignment = async (assignmentId) => {
+    const response = await axiosInstance.delete(`/tms/assignments/${assignmentId}/`);
+    return response.data;
+}
+
+// Assignment Submission APIs (Dummy for now)
+
+
+
+
+
+
+
+export { 
+    getAttandanceRecord, 
+    createAttandanceRecord, 
+    getAttendanceRecordByDateRange,
+    getAllAssignments,
+    createAssignment,
+    updateAssignment,
+    deleteAssignment,
+    
+};

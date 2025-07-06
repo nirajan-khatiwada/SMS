@@ -48,30 +48,29 @@ const sidebarMenuItems = [
     hasSubmenu: true,
     submenu: [
       {
-        id: 'all-records',
-        name: 'All Assignments',
-        path: '/nurse/all-record/',
+        id: 'all-assignments',
+        name: 'Manage Assignments',
+        path: '/teacher/assignments/',
         icon: <Library />,
-        description: 'View and search all records'
+        description: 'Create, edit and view all assignments'
       },
       {
-        id: 'See Assignment',
-        name: 'Add assignment',
-        path: '/nurse/add-record',
-        icon: <Plus />,
-        description: 'Add new record to system'
+        id: 'assignment-submission',
+        name: 'Assignment Submissions',
+        path: '/teacher/assignment-submission/',
+        icon: <Send />,
+        description: 'View and manage assignment submissions'
       },
-    
+      {
+        id: 'assignment-student-history',
+        name: 'Student History',
+        path: '/teacher/assignment-student-History/',
+        icon: <History />,
+        description: 'View student assignment history'
+      }
     ]
   }
-  ,  
-  {
-    id: 'phone-number-finder',
-    name: 'Phone Number Finder',
-    path: '/teacher/phone-number-finder/',
-    icon: <Phone/>,
-    description: 'View student phone numbers',
-  }
+  
   ,
   
   {
@@ -103,6 +102,14 @@ const sidebarMenuItems = [
       }
       
     ]
+  },
+   
+  {
+    id: 'phone-number-finder',
+    name: 'Phone Number Finder',
+    path: '/teacher/phone-number-finder/',
+    icon: <Phone/>,
+    description: 'View student phone numbers',
   },
   {
     id: 'announcements',

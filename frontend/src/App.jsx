@@ -27,7 +27,10 @@ import {
   Attandance,
   PhoneNunberFinder,
   AttandanceHistory,
-  AttandanceStudent
+  AttandanceStudent,
+  Assignments,
+  ASubmission,
+  AStudent
   
 } from "./pages/Export.jsx";
 import { ToastContainer } from "react-toastify";
@@ -198,6 +201,18 @@ const router = createBrowserRouter([
               {
                 path:"student-history",
                 element:<AttandanceStudent/>
+              },
+              {
+                path:"assignments",
+                element:<Assignments/>
+              },
+              {
+                path:"assignment-submission/",
+                element:<ASubmission/>
+              },
+              {
+                path:"assignment-student-History",
+                element:<AStudent/>
               }
               
              

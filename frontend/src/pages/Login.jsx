@@ -22,7 +22,7 @@ const Login = () => {
     { value: 'student', label: 'Student Portal', icon: '🎓' },
     { value: 'principal', label: 'Principal Portal', icon: '🏛️' },
     { value: 'nurse', label: 'Nurse Management', icon: '🏥' },
-    { value: 'attendance', label: 'Attendance System', icon: '📋' }
+    { value: 'hod', label: 'Coordinator Management', icon: '📋' }
   ];
 
   const handleLogin = async (e) => {

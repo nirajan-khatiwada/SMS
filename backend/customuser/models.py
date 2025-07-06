@@ -8,10 +8,8 @@ ROLES = (
     ("teacher", "Teacher"),
     ("student", "Student"),
     ("librarian", "Librarian"),
-    ("attender", "Attender"),
     ("nurse", "Nurse"),  # Instead of "hospital"
-    ("doctor", "Doctor"),
-    ("health_staff", "Health Staff"),
+    ("hod", "HOD"),
 )
 
 

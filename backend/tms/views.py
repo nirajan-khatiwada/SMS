@@ -4,15 +4,17 @@ from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from .models import AttandanceRecord
-from .serializer import AttandanceRecordSerializer,DateSerializer,FromTo
+from .serializer import AttandanceRecordSerializer,DateSerializer,FromTo,AssignmentSerializer,AssignmentSubmission
 from rest_framework.permissions import BasePermission
 from student.models import StudentProfile
 from django.db.models import Count
+from .models import Assignment
 # Create your views here.
 class IsTeacher(BasePermission):
     def has_permission(self, request, view):
         return request.user.role == "teacher"  # Assuming 'role' is a field in your user model
 
+    
 class AttendanceView(APIView):
     permission_classes = [IsAuthenticated, IsTeacher]
     authentication_classes = [JWTAuthentication]
@@ -43,8 +45,8 @@ class AttendanceView(APIView):
     
                     
 class StundentAttandanceHistoryView(APIView):
-    # permission_classes = [IsAuthenticated, IsTeacher]
-    # authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated, IsTeacher]
+    authentication_classes = [JWTAuthentication]
 
     def get(self, request):
         from_to_serializer = FromTo(data=request.query_params)
@@ -85,4 +87,41 @@ class StundentAttandanceHistoryView(APIView):
 
         return Response(from_to_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-            
+
+
+
+class AssignmentView(APIView):
+    permission_classes = [IsAuthenticated, IsTeacher]
+    authentication_classes = [JWTAuthentication,IsTeacher]
+    def get(self, request):
+        assignments = Assignment.objects.filter(teacher=request.user).order_by('-assigned_date')
+        serializer = AssignmentSerializer(assignments, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    def post(self, request):
+        serializer = AssignmentSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    def put(self, request, pk):
+        try:
+            assignment = Assignment.objects.get(pk=pk, teacher=request.user)
+        except Assignment.DoesNotExist:
+            return Response({"error": "Assignment not found"}, status=status.HTTP_404_NOT_FOUND)
+
+        serializer = AssignmentSerializer(assignment, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    def delete(self, request, pk):
+        try:
+            assignment = Assignment.objects.get(pk=pk, teacher=request.user)
+        except Assignment.DoesNotExist:
+            return Response({"error": "Assignment not found"}, status=status.HTTP_404_NOT_FOUND)
+
+        assignment.delete()
+        return Response({"message": "Assignment deleted successfully"}, status=status.HTTP_204_NO_CONTENT)
+
+
+
