@@ -60,3 +60,4 @@ class StudentPhoneNumberView(APIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         except StudentProfile.DoesNotExist:
             return Response({"error": "Student profile not found"}, status=status.HTTP_404_NOT_FOUND)
+        

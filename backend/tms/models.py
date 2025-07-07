@@ -19,6 +19,8 @@ class AttandanceRecord(models.Model):
     section = models.ForeignKey(Section, on_delete=models.CASCADE, related_name='attendance_records')
     date = models.DateField()
     is_present = models.BooleanField(default=False)  # True for present, False for absent
+    def __str__(self):
+        return f"{self.student.user.first_name} {self.student.user.last_name} - {self.date} - {'Present' if self.is_present else 'Absent'}"
     
 @receiver(post_save, sender=AttandanceRecord)
 def send_sms_notification(sender, instance, created, **kwargs):
@@ -61,9 +63,23 @@ class Assignment(models.Model):
     upload_file = models.FileField(upload_to='assignments/', blank=True, null=True)  # Optional field for file upload
     subject = models.CharField(max_length=100)
 
+    def __str__(self):
+        return f"{self.title} - {self.class_name.name} {self.section.name} ({self.due_date})"
+
+@receiver(post_save, sender=Assignment)
+def create_assignment_submission(sender, instance, created, **kwargs):
+    if created:
+        # Automatically create an assignment submission for each student in the class
+        students = StudentProfile.objects.filter(class_name=instance.class_name, section=instance.section)
+        for student in students:
+            AssignmentSubmission.objects.create(assignment=instance, student=student)
+
 class AssignmentSubmission(models.Model):
     assignment = models.ForeignKey(Assignment, on_delete=models.CASCADE, related_name='submissions')
     student = models.ForeignKey(StudentProfile, on_delete=models.CASCADE, related_name='submissions')
-    submitted_date = models.DateField(auto_now_add=True)
+    submitted_date = models.DateField(null=True, blank=True)  # Date when the assignment was submitted
     grade = models.CharField(max_length=10, blank=True, null=True)  # Optional field for grading
     feedback = models.TextField(blank=True, null=True)  # Optional field for teacher feedback
+    status = models.BooleanField(default=False)  # True if submitted, False if not submitted
+    def __str__(self):
+        return f"{self.assignment.title} - {self.student.user.first_name} {self.student.user.last_name} ({'Submitted' if self.status else 'Not Submitted'})"

@@ -3,8 +3,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.authentication import JWTAuthentication
-from .models import AttandanceRecord
-from .serializer import AttandanceRecordSerializer,DateSerializer,FromTo,AssignmentSerializer,AssignmentSubmission
+from .models import AttandanceRecord,AssignmentSubmission
+from .serializer import AttandanceRecordSerializer,DateSerializer,FromTo,AssignmentSerializer,AssignmentSubmissionSerializer
 from rest_framework.permissions import BasePermission
 from student.models import StudentProfile
 from django.db.models import Count
@@ -123,5 +123,30 @@ class AssignmentView(APIView):
         assignment.delete()
         return Response({"message": "Assignment deleted successfully"}, status=status.HTTP_204_NO_CONTENT)
 
+
+
+
+
+class AssignmentSubmissionView(APIView):
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [JWTAuthentication,IsTeacher]
+
+    def get(self, request,pk):
+        assignment_submissions = AssignmentSubmission.objects.filter(assignment__id=pk).order_by('-submitted_date')
+        serializer = AssignmentSubmissionSerializer(assignment_submissions, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
+    def put(self, request, pk):
+        try:
+            assignment_submission = AssignmentSubmission.objects.get(pk=pk)
+        except AssignmentSubmission.DoesNotExist:
+            return Response({"error": "Assignment submission not found"}, status=status.HTTP_404_NOT_FOUND)
+
+        serializer = AssignmentSubmissionSerializer(assignment_submission, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
 
 

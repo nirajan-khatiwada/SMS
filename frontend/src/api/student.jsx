@@ -20,4 +20,21 @@ const getAllStudentSections = async () => {
   return resp.data;
 }
 
-export { getStudentProfile,getStudentPhoneNumber,getAllStudentClasses,getAllStudentSections };
+
+const getAllAssignmentDetails=async (id)=>{
+  const resp = await axiosInstance.get(`/tms/assignment-submission/${id}/`);
+  return resp.data;
+}
+
+const postAssignmentDetails=async (data)=>{
+  const resp = await axiosInstance.post(`/tms/assignment-submission/`,data);
+  return resp.data;
+}
+
+const updateAssignmentDetails=async (id,data)=>{
+  const resp = await axiosInstance.put(`/tms/assignment-submission/${id}/`,data);
+  return resp.data;
+}
+
+
+export { getStudentProfile,getStudentPhoneNumber,getAllStudentClasses,getAllStudentSections,getAllAssignmentDetails,postAssignmentDetails,updateAssignmentDetails };

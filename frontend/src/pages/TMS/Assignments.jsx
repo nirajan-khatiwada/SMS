@@ -38,9 +38,7 @@ const Assignments = () => {
   const { user } = useContext(AuthContext);
   // State management
   const [selectedClass, setSelectedClass] = useState('');
-  const [selectedClassId, setSelectedClassId] = useState('');
   const [selectedSection, setSelectedSection] = useState('');
-  const [selectedSectionId, setSelectedSectionId] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const [sortBy, setSortBy] = useState('due_date');
   const [sortOrder, setSortOrder] = useState('asc');
@@ -146,10 +144,10 @@ const Assignments = () => {
     let filtered = [...assignments];
 
     // Filter by class and section
-    if (selectedClassId && selectedSectionId) {
+    if (selectedClass && selectedSection) {
       filtered = filtered.filter(assignment => 
-        assignment.class_name === parseInt(selectedClassId) && 
-        assignment.section === parseInt(selectedSectionId)
+        assignment.class_name === selectedClass && 
+        assignment.section === selectedSection
       );
     }
 
@@ -180,7 +178,7 @@ const Assignments = () => {
     });
 
     return filtered;
-  }, [assignments, selectedClassId, selectedSectionId, searchTerm, sortBy, sortOrder]);
+  }, [assignments, selectedClass, selectedSection, searchTerm, sortBy, sortOrder]);
 
   // Helper functions
   const resetForm = () => {
@@ -198,8 +196,8 @@ const Assignments = () => {
   const handleCreateAssignment = () => {
     setFormData({
       ...formData,
-      class_name: selectedClassId,
-      section: selectedSectionId
+      class_name: selectedClass,
+      section: selectedSection
     });
     setShowCreateModal(true);
   };
@@ -231,6 +229,9 @@ const Assignments = () => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     
+    // Find the actual class and section IDs for backend submission
+    const selectedClassObj = classes.find(cls => cls.name === formData.class_name);
+    const selectedSectionObj = sections.find(sec => sec.name === formData.section);
 
     const formDataToSend = new FormData();
     
@@ -245,6 +246,16 @@ const Assignments = () => {
           formDataToSend.append(key, formData[key]);
         } else {
           console.log('Skipping upload_file - not a valid File object:', formData[key]);
+        }
+      } else if (key === 'class_name') {
+        // Send class ID to backend
+        if (selectedClassObj?.id) {
+          formDataToSend.append(key, selectedClassObj.id);
+        }
+      } else if (key === 'section') {
+        // Send section ID to backend
+        if (selectedSectionObj?.id) {
+          formDataToSend.append(key, selectedSectionObj.id);
         }
       } else if (formData[key] !== null && formData[key] !== '' && formData[key] !== undefined) {
         formDataToSend.append(key, formData[key]);
@@ -366,11 +377,7 @@ const Assignments = () => {
               </label>
               <select
                 value={selectedClass}
-                onChange={(e) => {
-                  const selected = classes.find(cls => cls.name === e.target.value);
-                  setSelectedClass(e.target.value);
-                  setSelectedClassId(selected?.id || '');
-                }}
+                onChange={(e) => setSelectedClass(e.target.value)}
                 className="w-full p-3 bg-white/90 border border-gray-200/50 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-300"
               >
                 <option value="">Select Class</option>
@@ -390,11 +397,7 @@ const Assignments = () => {
               </label>
               <select
                 value={selectedSection}
-                onChange={(e) => {
-                  const selected = sections.find(sec => sec.name === e.target.value);
-                  setSelectedSection(e.target.value);
-                  setSelectedSectionId(selected?.id || '');
-                }}
+                onChange={(e) => setSelectedSection(e.target.value)}
                 className="w-full p-3 bg-white/90 border border-gray-200/50 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-300"
               >
                 <option value="">Select Section</option>
@@ -457,7 +460,7 @@ const Assignments = () => {
             <p className="text-sm text-gray-600">
               {filteredAssignments.length} assignment{filteredAssignments.length !== 1 ? 's' : ''} found
             </p>
-            {selectedClassId && selectedSectionId && (
+            {selectedClass && selectedSection && (
               <button
                 onClick={handleCreateAssignment}
                 className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl"
@@ -470,7 +473,7 @@ const Assignments = () => {
         </div>
 
         {/* No Class/Section Selected */}
-        {(!selectedClassId || !selectedSectionId) && (
+        {(!selectedClass || !selectedSection) && (
           <div className="bg-white/70 backdrop-blur-xl rounded-xl p-8 shadow-sm border border-gray-100/50 text-center">
             <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-4">
               <Users className="w-8 h-8 text-blue-600" />
@@ -485,7 +488,7 @@ const Assignments = () => {
         )}
 
         {/* Assignments List */}
-        {(selectedClassId && selectedSectionId) && (
+        {(selectedClass && selectedSection) && (
           <>
             {assignmentsLoading ? (
               <LoadingSkeleton />

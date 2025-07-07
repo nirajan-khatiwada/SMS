@@ -58,7 +58,16 @@ const deleteAssignment = async (assignmentId) => {
     return response.data;
 }
 
-// Assignment Submission APIs (Dummy for now)
+
+const getAllAssignmentSubmition = async (assignmentId) => {
+    const response = await axiosInstance.get(`/tms/assignment-submissions/${assignmentId}/`);
+    return response.data;
+}
+
+const updateAssignmentSubmission = async (submissionId, submissionData) => {
+    const response = await axiosInstance.put(`/tms/assignment-submission/${submissionId}/`, submissionData);
+    return response.data;
+}
 
 
 
@@ -74,5 +83,7 @@ export {
     createAssignment,
     updateAssignment,
     deleteAssignment,
+    getAllAssignmentSubmition,
+    updateAssignmentSubmission
     
 };

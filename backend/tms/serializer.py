@@ -1,10 +1,10 @@
-from os import write
 from rest_framework import serializers
 from .models import AttandanceRecord,Assignment,AssignmentSubmission
 from student.models import StudentProfile
 from rest_framework.serializers import ModelSerializer
 from .models import Class, Section
-
+from .models import AssignmentSubmission
+from datetime import datetime
 class AttandanceRecordSerializer(ModelSerializer):
     
     class Meta:
@@ -81,17 +81,61 @@ class AssignmentSerializer(ModelSerializer):
             class_name=obj.class_name,
             section=obj.section
         ).count()
-        total_submissions = AssignmentSubmission.objects.filter(assignment=obj).count()
+        total_submissions = AssignmentSubmission.objects.filter(assignment=obj,status=True).count()
         return {
             'total_submissions': total_submissions,
             'total_students': total_student,
             'percentage': (total_submissions / total_student * 100) if total_student > 0 else 0
         }
+    def to_representation(self, instance):
+        representation= super().to_representation(instance)
+        representation['class_name'] = instance.class_name.name if instance.class_name else None
+        representation['section'] = instance.section.name if instance.section else None
+        return representation
     
 
- 
-        
+class AssignmentSubmissionSerializer(ModelSerializer):
+    class Meta:
+        model = AssignmentSubmission
+        fields = [
+            "id",
+            "assignment",
+            "student",
+            "submitted_date",
+            "grade",
+            "feedback",
+            "status"
+        ]
+        extra_kwargs = {
+            'assignment': {'write_only': True},
+        }
     
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        representation['student'] = {
+            'id': instance.student.id,
+            'first_name': instance.student.user.first_name,
+            'last_name': instance.student.user.last_name,
+            'roll_number': instance.student.roll_number,
+        }
+        representation['assignment'] = {
+            'id': instance.assignment.id,
+            'title': instance.assignment.title,
+            'due_date': instance.assignment.due_date,
+            'class_name': instance.assignment.class_name.name if instance.assignment.class_name else None,
+            'section': instance.assignment.section.name if instance.assignment.section else None,
+        }
+        return representation
+    def update(self, instance, validated_data):
+        instance.status=True
+        instance.submitted_date = datetime.now().date()
+        instance.save()
+        return super().update(instance, validated_data)
+    
+ 
+
+        
+
 
 
 
