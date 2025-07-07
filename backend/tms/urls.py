@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import AttendanceView,StundentAttandanceHistoryView,AssignmentView,AssignmentSubmissionView
+from .views import AttendanceView,StundentAttandanceHistoryView,AssignmentView,AssignmentSubmissionView,AssignmentSubmissionCreateView
 urlpatterns = [
     path('attandance/',AttendanceView.as_view(), name='attandance-list-create'),
     path('student-attandance-history/', StundentAttandanceHistoryView.as_view(), name='attandance-history'),
@@ -7,5 +7,6 @@ urlpatterns = [
     path('assignments/<int:pk>/', AssignmentView.as_view(), name='update-delete-assignment'),
     path('assignment-submissions/<int:pk>/', AssignmentSubmissionView.as_view(), name='assignment-submission-list'),
     path('assignment-submission/<int:pk>/', AssignmentSubmissionView.as_view(), name='update-assignment-submission'),
+    path('assignment-submission-detail/', AssignmentSubmissionCreateView.as_view(), name='assignment-submission-detail'),
 
 ]

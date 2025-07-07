@@ -1,3 +1,4 @@
+from os import read
 from rest_framework import serializers
 from .models import AttandanceRecord,Assignment,AssignmentSubmission
 from student.models import StudentProfile
@@ -5,6 +6,11 @@ from rest_framework.serializers import ModelSerializer
 from .models import Class, Section
 from .models import AssignmentSubmission
 from datetime import datetime
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
+
+
 class AttandanceRecordSerializer(ModelSerializer):
     
     class Meta:
@@ -133,11 +139,88 @@ class AssignmentSubmissionSerializer(ModelSerializer):
         return super().update(instance, validated_data)
     
  
+class StudentSubmitionDetailSerializer(serializers.Serializer):
 
-        
+    section = serializers.PrimaryKeyRelatedField(
+        queryset=Section.objects.all(),
+        required=True,
+        write_only=True
+    )
+    class_name = serializers.PrimaryKeyRelatedField(
+        queryset=Class.objects.all(),
+        required=True,
+        write_only=True
+    )
 
 
-
-
-        
+class StudentAssignmentSummarySerializer(serializers.Serializer):
+    """Serializer for showing student assignment summary with all assignments and submissions"""
     
+    def to_representation(self, instance):
+        try:
+            # instance is a StudentProfile object
+            class_name = self.context.get('class_name')
+            section = self.context.get('section')
+            teacher = self.context.get('teacher')
+            
+            # Validate that we have all required context
+            if not all([class_name, section, teacher]):
+                return {
+                    'error': 'Missing required context parameters'
+                }
+            
+            # Get all assignments for this class
+            assignments = Assignment.objects.filter(
+                class_name=class_name,
+                section=section,
+                teacher=teacher
+            ).order_by('assigned_date')
+            
+            # Get all submissions for this student
+            submissions = AssignmentSubmission.objects.filter(
+                student=instance,
+                assignment__class_name=class_name,
+                assignment__section=section,
+                assignment__teacher=teacher
+            )
+            
+            # Create assignment details with submission status
+            assignment_details = []
+            for assignment in assignments:
+                try:
+                    submission = submissions.filter(assignment=assignment).first()
+                    assignment_details.append({
+                        'assignment_id': assignment.id,
+                        'assignment_title': assignment.title,
+                        'due_date': assignment.due_date,
+                        'assigned_date': assignment.assigned_date,
+                        'subject': assignment.subject,
+                        'submission_status': submission.status if submission else False,
+                        'submitted_date': submission.submitted_date if submission else None,
+                        'grade': submission.grade if submission else None,
+                        'feedback': submission.feedback if submission else None,
+                    })
+                except Exception as e:
+                    # Log the error but continue processing other assignments
+                    print(f"Error processing assignment {assignment.id}: {str(e)}")
+                    continue
+            
+            # Safely get student information
+            student_data = {
+                'student_id': getattr(instance, 'id', None),
+                'first_name': getattr(instance.user, 'first_name', '') if hasattr(instance, 'user') and instance.user else '',
+                'last_name': getattr(instance.user, 'last_name', '') if hasattr(instance, 'user') and instance.user else '',
+                'roll_number': getattr(instance, 'roll_number', ''),
+                'total_assignments': assignments.count(),
+                'submitted_assignments': submissions.filter(status=True).count(),
+                'assignment_details': assignment_details
+            }
+            
+            return student_data
+            
+        except Exception as e:
+            # Return error information for debugging
+            return {
+                'error': f'Error processing student data: {str(e)}',
+                'student_id': getattr(instance, 'id', None) if instance else None
+            }

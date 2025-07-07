@@ -30,7 +30,8 @@ import {
   AttandanceStudent,
   Assignments,
   ASubmission,
-  AStudent
+  AStudent,
+  TDash
   
 } from "./pages/Export.jsx";
 import { ToastContainer } from "react-toastify";
@@ -176,7 +177,7 @@ const router = createBrowserRouter([
               children:[
               {
               path:"dashboard",
-              element:<h1>This is my dashboard</h1>
+              element:<TDash/>
               },
               {
                 path:"profile",

@@ -4,7 +4,7 @@ from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from .models import AttandanceRecord,AssignmentSubmission
-from .serializer import AttandanceRecordSerializer,DateSerializer,FromTo,AssignmentSerializer,AssignmentSubmissionSerializer
+from .serializer import AttandanceRecordSerializer,DateSerializer,FromTo,AssignmentSerializer,AssignmentSubmissionSerializer,StudentSubmitionDetailSerializer,StudentAssignmentSummarySerializer
 from rest_framework.permissions import BasePermission
 from student.models import StudentProfile
 from django.db.models import Count
@@ -149,4 +149,79 @@ class AssignmentSubmissionView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 
+
+class AssignmentSubmissionCreateView(APIView):
+    """
+    API endpoint to get assignment submission details for a class and section.
+    
+    Query Parameters:
+    - class_name: ID of the class
+    - section: ID of the section  
+    - teacher: ID of the teacher
+    
+    Returns:
+    - class_name: Name of the class
+    - section: Name of the section
+    - total_assignments: Total number of assignments created for this class
+    - total_students: Total number of students in the class
+    - students: Array of student objects with their assignment details
+        - Each student object contains:
+            - student_id, first_name, last_name, roll_number
+            - total_assignments: Total assignments for this student
+            - submitted_assignments: Number of assignments submitted by student
+            - assignment_details: Array of all assignments with submission status
+    """
+    permission_classes = [IsAuthenticated, IsTeacher]
+    authentication_classes = [JWTAuthentication]
+
+    def get(self, request):
+        try:
+            student_submission_serializer = StudentSubmitionDetailSerializer(data=request.query_params)
+            if student_submission_serializer.is_valid():
+                class_name = student_submission_serializer.validated_data['class_name']
+                section = student_submission_serializer.validated_data['section']
+                teacher = request.user  # Assuming the teacher is the authenticated user
+                
+                # Get all students in the class and section
+                students = StudentProfile.objects.filter(
+                    class_name=class_name,
+                    section=section,
+                    user__role='student'
+                ).select_related('user').order_by('roll_number')
+                
+                # Get total assignments for this class and section
+                total_assignments = Assignment.objects.filter(
+                    class_name=class_name,
+                    section=section,
+                    teacher=teacher
+                ).count()
+                
+                # Serialize each student with their assignment summary
+                serializer = StudentAssignmentSummarySerializer(
+                    students, 
+                    many=True,
+                    context={
+                        'class_name': class_name,
+                        'section': section,
+                        'teacher': teacher
+                    }
+                )
+                
+                response_data = {
+                    'class_name': class_name.name if hasattr(class_name, 'name') else str(class_name),
+                    'section': section.name if hasattr(section, 'name') else str(section),
+                    'total_assignments': total_assignments,
+                    'total_students': students.count(),
+                    'students': serializer.data
+                }
+                
+                return Response(response_data, status=status.HTTP_200_OK)
+            return Response(student_submission_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        
+        except Exception as e:
+            return Response({
+                'error': 'An error occurred while processing the request',
+                'details': str(e)
+            }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
 
