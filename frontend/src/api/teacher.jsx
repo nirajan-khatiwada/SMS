@@ -69,6 +69,13 @@ const updateAssignmentSubmission = async (submissionId, submissionData) => {
     return response.data;
 }
 
+const assignmentSummary = async (className, section) => {
+    const response = await axiosInstance.get(
+      `/tms/assignment-submission-detail/?class_name=${className}&section=${section}`
+    );
+    return response.data;
+}
+
 
 
 
@@ -84,6 +91,7 @@ export {
     updateAssignment,
     deleteAssignment,
     getAllAssignmentSubmition,
-    updateAssignmentSubmission
+    updateAssignmentSubmission,
+    assignmentSummary
     
 };
