@@ -103,6 +103,29 @@ const sidebarMenuItems = [
       
     ]
   },
+  
+  {
+    id: 'Routine',
+    name: 'Routine Management',
+    icon: <Clock />,
+    hasSubmenu: true,
+    submenu: [
+      {
+        id: 'routine',
+        name: 'Routine',
+        path: '/teacher/routine/',
+      
+      }]
+
+  },
+   {
+    id:'Notes',
+    name: 'Notes',
+    icon: <Bookmark />,
+    description: 'View and manage your notes',
+    path: '/teacher/notes/',
+  }
+  ,
    
   {
     id: 'phone-number-finder',
@@ -118,6 +141,7 @@ const sidebarMenuItems = [
     icon: <Megaphone />,
     description: 'View principal notices and announcements'
   }
+ 
   ,
   {
     id: 'account',

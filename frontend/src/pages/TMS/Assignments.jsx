@@ -143,10 +143,16 @@ const Assignments = () => {
   const filteredAssignments = useMemo(() => {
     let filtered = [...assignments];
 
-    // Filter by class and section
+    // Filter by class (if selected)
+    if (selectedClass) {
+      filtered = filtered.filter(assignment => 
+        assignment.class_name === selectedClass
+      );
+    }
+
+    // Filter by section (if selected and class is also selected)
     if (selectedClass && selectedSection) {
       filtered = filtered.filter(assignment => 
-        assignment.class_name === selectedClass && 
         assignment.section === selectedSection
       );
     }
@@ -194,11 +200,14 @@ const Assignments = () => {
   };
 
   const handleCreateAssignment = () => {
-    setFormData({
-      ...formData,
-      class_name: selectedClass,
-      section: selectedSection
-    });
+    // Only set class and section if both are selected
+    if (selectedClass && selectedSection) {
+      setFormData({
+        ...formData,
+        class_name: selectedClass,
+        section: selectedSection
+      });
+    }
     setShowCreateModal(true);
   };
 
@@ -459,133 +468,126 @@ const Assignments = () => {
           <div className="flex justify-between items-center pt-4 border-t border-gray-100/50">
             <p className="text-sm text-gray-600">
               {filteredAssignments.length} assignment{filteredAssignments.length !== 1 ? 's' : ''} found
+              {selectedClass && (
+                <span className="ml-2 text-blue-600 font-medium">
+                  {selectedSection ? `for ${selectedClass} - ${selectedSection}` : `for ${selectedClass}`}
+                </span>
+              )}
             </p>
-            {selectedClass && selectedSection && (
-              <button
-                onClick={handleCreateAssignment}
-                className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl"
-              >
-                <Plus className="w-4 h-4" />
-                <span>Create Assignment</span>
-              </button>
-            )}
+            <button
+              onClick={handleCreateAssignment}
+              className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+            >
+              <Plus className="w-4 h-4" />
+              <span>Create Assignment</span>
+            </button>
           </div>
         </div>
 
-        {/* No Class/Section Selected */}
-        {(!selectedClass || !selectedSection) && (
+        {/* Assignments List */}
+        {assignmentsLoading ? (
+          <LoadingSkeleton />
+        ) : filteredAssignments.length === 0 ? (
           <div className="bg-white/70 backdrop-blur-xl rounded-xl p-8 shadow-sm border border-gray-100/50 text-center">
-            <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Users className="w-8 h-8 text-blue-600" />
+            <div className="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-4">
+              <BookOpen className="w-8 h-8 text-gray-400" />
             </div>
             <h3 className="text-lg font-semibold text-gray-900 mb-2">
-              Select Class and Section
+              {assignments.length === 0 ? 'No Assignments Created Yet' : 'No Assignments Found'}
             </h3>
-            <p className="text-gray-600">
-              Please select both a class and section to view and manage assignments.
+            <p className="text-gray-600 mb-4">
+              {assignments.length === 0 
+                ? 'Start by creating your first assignment.' 
+                : selectedClass 
+                  ? `No assignments found for ${selectedClass}${selectedSection ? ` - ${selectedSection}` : ''}.`
+                  : 'No assignments match your search criteria.'
+              }
             </p>
+            <button
+              onClick={handleCreateAssignment}
+              className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl mx-auto"
+            >
+              <Plus className="w-4 h-4" />
+              <span>{assignments.length === 0 ? 'Create First Assignment' : 'Create Assignment'}</span>
+            </button>
           </div>
-        )}
-
-        {/* Assignments List */}
-        {(selectedClass && selectedSection) && (
-          <>
-            {assignmentsLoading ? (
-              <LoadingSkeleton />
-            ) : filteredAssignments.length === 0 ? (
-              <div className="bg-white/70 backdrop-blur-xl rounded-xl p-8 shadow-sm border border-gray-100/50 text-center">
-                <div className="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <BookOpen className="w-8 h-8 text-gray-400" />
-                </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  No Assignments Found
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  No assignments found for the selected class and section.
-                </p>
-                <button
-                  onClick={handleCreateAssignment}
-                  className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl mx-auto"
-                >
-                  <Plus className="w-4 h-4" />
-                  <span>Create First Assignment</span>
-                </button>
-              </div>
-            ) : (
-              <div className="space-y-4">
-                {filteredAssignments.map((assignment) => (
-                  <div 
-                    key={assignment.id}
-                    className="bg-white/70 backdrop-blur-xl rounded-xl p-6 shadow-sm border border-gray-100/50 hover:shadow-lg transition-all duration-300"
-                  >
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="flex-1">
-                        <div className="flex items-center space-x-3 mb-2">
-                          <h3 className="text-lg font-semibold text-gray-900">
-                            {assignment.title}
-                          </h3>
-                          <span className={`px-3 py-1 rounded-full text-xs font-medium border ${getStatusColor(assignment.due_date)}`}>
-                            {getStatusText(assignment.due_date)}
-                          </span>
-                        </div>
-                        <p className="text-gray-600 mb-3 line-clamp-2">
-                          {assignment.description}
-                        </p>
-                        <div className="flex items-center space-x-4 text-sm text-gray-500">
-                          <div className="flex items-center space-x-1">
-                            <BookOpen className="w-4 h-4" />
-                            <span>{assignment.subject}</span>
-                          </div>
-                          <div className="flex items-center space-x-1">
-                            <Calendar className="w-4 h-4" />
-                            <span>Due: {new Date(assignment.due_date).toLocaleDateString()}</span>
-                          </div>
-                          <div className="flex items-center space-x-1">
-                            <User className="w-4 h-4" />
-                            <span>
-                              {assignment.submitted?.total_submissions || 0}/{assignment.submitted?.total_students || 0} submitted
-                            </span>
-                          </div>
-                        </div>
+        ) : (
+          <div className="space-y-4">
+            {filteredAssignments.map((assignment) => (
+              <div 
+                key={assignment.id}
+                className="bg-white/70 backdrop-blur-xl rounded-xl p-6 shadow-sm border border-gray-100/50 hover:shadow-lg transition-all duration-300"
+              >
+                <div className="flex items-start justify-between mb-4">
+                  <div className="flex-1">
+                    <div className="flex items-center space-x-3 mb-2">
+                      <h3 className="text-lg font-semibold text-gray-900">
+                        {assignment.title}
+                      </h3>
+                      <span className={`px-3 py-1 rounded-full text-xs font-medium border ${getStatusColor(assignment.due_date)}`}>
+                        {getStatusText(assignment.due_date)}
+                      </span>
+                    </div>
+                    <p className="text-gray-600 mb-3 line-clamp-2">
+                      {assignment.description}
+                    </p>
+                    <div className="flex items-center space-x-4 text-sm text-gray-500">
+                      <div className="flex items-center space-x-1">
+                        <BookOpen className="w-4 h-4" />
+                        <span>{assignment.subject}</span>
                       </div>
-                      <div className="flex items-center space-x-2 ml-4">
-                        <button
-                          onClick={() => handleViewAssignment(assignment)}
-                          className="p-2 text-green-600 hover:bg-green-50 rounded-lg transition-all duration-300"
-                          title="View Details"
-                        >
-                          <Eye className="w-4 h-4" />
-                        </button>
-                        <button
-                          onClick={() => handleEditAssignment(assignment)}
-                          className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-300"
-                          title="Edit Assignment"
-                        >
-                          <Edit3 className="w-4 h-4" />
-                        </button>
-                        <button
-                          onClick={() => handleDeleteAssignment(assignment)}
-                          className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-all duration-300"
-                          title="Delete Assignment"
-                        >
-                          <Trash2 className="w-4 h-4" />
-                        </button>
+                      <div className="flex items-center space-x-1">
+                        <Users className="w-4 h-4" />
+                        <span>{assignment.class_name} - {assignment.section}</span>
+                      </div>
+                      <div className="flex items-center space-x-1">
+                        <Calendar className="w-4 h-4" />
+                        <span>Due: {new Date(assignment.due_date).toLocaleDateString()}</span>
+                      </div>
+                      <div className="flex items-center space-x-1">
+                        <User className="w-4 h-4" />
+                        <span>
+                          {assignment.submitted?.total_submissions || 0}/{assignment.submitted?.total_students || 0} submitted
+                        </span>
                       </div>
                     </div>
-                    
-                    {assignment.upload_file && (
-                      <div className="bg-gray-50/50 rounded-lg p-3 border border-gray-200/50">
-                        <div className="flex items-center space-x-2 text-sm text-gray-600">
-                          <FileText className="w-4 h-4" />
-                          <span>Attachment: {assignment.upload_file.split('/').pop()}</span>
-                        </div>
-                      </div>
-                    )}
                   </div>
-                ))}
+                  <div className="flex items-center space-x-2 ml-4">
+                    <button
+                      onClick={() => handleViewAssignment(assignment)}
+                      className="p-2 text-green-600 hover:bg-green-50 rounded-lg transition-all duration-300"
+                      title="View Details"
+                    >
+                      <Eye className="w-4 h-4" />
+                    </button>
+                    <button
+                      onClick={() => handleEditAssignment(assignment)}
+                      className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-300"
+                      title="Edit Assignment"
+                    >
+                      <Edit3 className="w-4 h-4" />
+                    </button>
+                    <button
+                      onClick={() => handleDeleteAssignment(assignment)}
+                      className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-all duration-300"
+                      title="Delete Assignment"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
+                
+                {assignment.upload_file && (
+                  <div className="bg-gray-50/50 rounded-lg p-3 border border-gray-200/50">
+                    <div className="flex items-center space-x-2 text-sm text-gray-600">
+                      <FileText className="w-4 h-4" />
+                      <span>Attachment: {assignment.upload_file.split('/').pop()}</span>
+                    </div>
+                  </div>
+                )}
               </div>
-            )}
-          </>
+            ))}
+          </div>
         )}
 
         {/* Create/Edit Modal */}
@@ -624,6 +626,45 @@ const Assignments = () => {
                       className="w-full p-3 bg-white/90 border border-gray-200/50 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-300"
                       placeholder="Enter assignment title"
                     />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Class *
+                    </label>
+                    <select
+                      required
+                      value={formData.class_name}
+                      onChange={(e) => setFormData({...formData, class_name: e.target.value, section: ''})}
+                      className="w-full p-3 bg-white/90 border border-gray-200/50 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-300"
+                    >
+                      <option value="">Select Class</option>
+                      {classes.map((cls) => (
+                        <option key={cls.id} value={cls.name}>
+                          {cls.name}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Section *
+                    </label>
+                    <select
+                      required
+                      value={formData.section}
+                      onChange={(e) => setFormData({...formData, section: e.target.value})}
+                      className="w-full p-3 bg-white/90 border border-gray-200/50 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-300"
+                      disabled={!formData.class_name}
+                    >
+                      <option value="">Select Section</option>
+                      {sections.map((section) => (
+                        <option key={section.id} value={section.name}>
+                          {section.name}
+                        </option>
+                      ))}
+                    </select>
                   </div>
 
                   <div>
