@@ -30,7 +30,7 @@ import {
 } from '../../api/libriary';
 import { getAllStudentClasses,getAllStudentSections } from '../../api/student';
 import { getStudentProfile } from '../../api/student';
-import { fetchNotifications } from '../../api/api';
+import { fetchNotifications } from '../../api/notification';
 
 // Simple chart components since no chart library is installed
 const SimpleBarChart = ({ data, title, color = "blue" }) => {

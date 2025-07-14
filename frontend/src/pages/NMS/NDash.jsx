@@ -19,7 +19,7 @@ import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { getAllRecords, getProducts } from '../../api/nurse';
 import { getStudentProfile } from '../../api/student';
-import { fetchNotifications } from '../../api/api';
+import { fetchNotifications } from '../../api/notification';
 
 // Health condition choices matching the backend
 const HEALTH_CONDITIONS = [

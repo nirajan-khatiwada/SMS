@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 
-import { fetchNotifications } from "./../../../api/api";
+import { fetchNotifications } from "./../../../api/notification";
 
 const LoadingSkeleton = () => (
   <div className="space-y-4">

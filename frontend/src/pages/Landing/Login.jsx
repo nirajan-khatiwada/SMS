@@ -1,9 +1,9 @@
 import React, { useState,useContext } from 'react';
-import AuthContext from '../context/Auth';
+import AuthContext from '../../context/Auth';
 import { Eye, EyeOff, Mail, Lock, Shield, User, ChevronDown, RefreshCw, ArrowLeft, AlertCircle } from 'lucide-react';
-import Logo from '../assets/logo.png';
+import Logo from './../../assets/logo.png';
 import { Link } from 'react-router-dom';
-import useTitle from "../hooks/pageTitle"
+import useTitle from "../../hooks/pageTitle"
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
@@ -22,7 +22,6 @@ const Login = () => {
     { value: 'student', label: 'Student Portal', icon: '🎓' },
     { value: 'principal', label: 'Principal Portal', icon: '🏛️' },
     { value: 'nurse', label: 'Nurse Management', icon: '🏥' },
-    { value: 'hod', label: 'Coordinator Management', icon: '📋' }
   ];
 
   const handleLogin = async (e) => {

@@ -5,7 +5,7 @@ import {
   QueryClient,
   useQueryClient,
 } from "@tanstack/react-query";
-import { updateEmailAndFn, fetchUser, changePassword } from "../../../api/api";
+import { updateEmailAndFn, fetchUser, changePassword } from "../../../api/user";
 import { toast } from "react-toastify";
 
 import {

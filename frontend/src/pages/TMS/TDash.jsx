@@ -30,7 +30,7 @@ import {
   getAttendanceRecordByDateRange
 } from '../../api/teacher';
 import { getAllStudentClasses, getAllStudentSections, getStudentProfile } from '../../api/student';
-import { fetchNotifications } from '../../api/api';
+import { fetchNotifications } from '../../api/notification';
 
 // Simple chart components
 const SimpleBarChart = ({ data, title, color = "blue" }) => {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect,useContext, use } from 'react';
 import AuthContext from '../../../context/Auth';
 import { useQuery } from '@tanstack/react-query';
-import { fetchUser } from '../../../api/api';
+import { fetchUser } from '../../../api/user';
 import {  NavLink, useLocation } from 'react-router-dom';
 import useTitle from '../../../hooks/pageTitle';
 import {

@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form";
 import {  Send, MessageCircle, AlertCircle } from "lucide-react";
 import { toast } from "react-toastify";
-import { contactForm } from "../api/api";
-import useTitle from "../hooks/pageTitle"
+import { contactForm } from "../../api/api";
+import useTitle from "../../hooks/pageTitle"
 
 
 const Contact = () => {

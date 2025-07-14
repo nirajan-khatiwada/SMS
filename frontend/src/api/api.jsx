@@ -23,6 +23,7 @@ const contactForm =async  (data)=>{
     return resp.data;
 }
 
+
 const logout = async (refresh)=>{
     await axiosInstance.post('auth/token/blacklist/', {refresh});
 }
@@ -33,27 +34,5 @@ const login = async (data)=>{
     return {access, refresh};
 
 }
-
-const fetchUser = async ()=>{
-    const resp = await axiosInstance.get('/user/');
-    return resp.data;
-}
-
-const updateEmailAndFn = async (data)=>{
-    const resp = await axiosInstance.put('/user/', data);
-    return resp.data;
-}
-
-const changePassword = async (data)=>{
-    const resp = await axiosInstance.post('/user/change-password/', data);
-    return resp.data;
-}
-
-const fetchNotifications = async ()=>{
-    const resp = await axiosInstance.get('/notification/');
-    return resp.data;
-}
-
-
-export {contactForm,logout,login,fetchUser,updateEmailAndFn,changePassword,fetchNotifications}
+export {contactForm,logout,login}
 export default axiosInstance;

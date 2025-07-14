@@ -7,7 +7,7 @@ import {
   ChevronDown,
   ChevronUp,
 } from "lucide-react";
-import PricingCard from "../components/SmallComponent/PricingCard";
+import PricingCard from "../../components/SmallComponent/PricingCard";
 const Data = {
   Pricing: [
     {
@@ -19,7 +19,7 @@ const Data = {
         "24/7 Support",
         "Custom Integration",
         "Unlimited Users",
-        "All 7 Management Portals",
+        "All 5 Management Portals",
         "Advanced Analytics",
         "Data Backup",
         "Custom Branding",
@@ -34,7 +34,7 @@ const Data = {
       features: [
         "24/7 Support",
         "Custom Integration",
-        "All 7 Management Portals",
+        "All 5 Management Portals",
         "Unlimited Users",
         "Advanced Analytics",
         "Data Backup",
@@ -49,7 +49,7 @@ const Data = {
       badge: "HOT", // Add HOT badge
       features: [
         "24/7 Support",
-        "All 7 Management Portals",
+        "All 5 Management Portals",
         "Custom Integration",
         "Unlimited Users",
         "Advanced Analytics",
@@ -82,7 +82,7 @@ const Data = {
   ],
 };
 
-import useTitle from "../hooks/pageTitle"
+import useTitle from "../../hooks/pageTitle"
 
 
 const Pricing = () => {
