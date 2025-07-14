@@ -9,7 +9,6 @@ ROLES = (
     ("student", "Student"),
     ("librarian", "Librarian"),
     ("nurse", "Nurse"),  # Instead of "hospital"
-    ("hod", "HOD"),
 )
 
 
